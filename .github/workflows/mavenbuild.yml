@@ -1,8 +1,6 @@
 name: Maven Build with Tests
 on:
   pull_request:
-    branches:
-      - main
     branches-ignore:
       - issue06-doc
 
