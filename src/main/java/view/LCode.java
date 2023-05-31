@@ -11,8 +11,8 @@ public class LCode extends JLabel {
     private Code code;
 
     /**
-     * Kezeli a code labelen történő kattintás eseményeket.
-     * Beállítja, hogy melyik kódra kattintottak utoljára
+     * Kezeli a code labelen torteno kattintas esemenyeket.
+     * Beallitja, hogy melyik kodra kattintottak utoljara
      */
     public static MouseAdapter adapter = new MouseAdapter() {
         @Override
@@ -23,8 +23,8 @@ public class LCode extends JLabel {
     };
 
     /**
-     * Az osztály konstruktora, beállítja a label megjelenését
-     * @param a a játékos által birtokolt kódok fajtái
+     * Az osztaly konstruktora, beallitja a label megjeleneset
+     * @param a a jatekos altal birtokolt kodok fajtai
      */
     public LCode(Code a) {
         code = a;

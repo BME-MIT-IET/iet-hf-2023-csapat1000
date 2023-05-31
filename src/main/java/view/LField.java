@@ -11,8 +11,8 @@ public class LField extends JLabel {
     private Field field;
 
     /**
-     * Kezeli a field labelen történő kattintás eseményeket.
-     * Beállítja, hogy melyik mezőre kattintottak utoljára
+     * Kezeli a field labelen torteno kattintas esemenyeket.
+     * Beallitja, hogy melyik mezore kattintottak utoljara
      */
     public static MouseAdapter adapter = new MouseAdapter() {
         @Override
@@ -22,18 +22,18 @@ public class LField extends JLabel {
         }
     };
 
-    //A mezők megjelenítéséhez használt különböző képek
+    //A mezok megjelenitesehez hasznalt kulonbozo kepek
     private static ImageIcon negy = new ImageIcon("4.png");
     private static ImageIcon nyolc = new ImageIcon("8.png");
     private static ImageIcon negyF = new ImageIcon("4f.png");
     private static ImageIcon nyolcF = new ImageIcon("8f.png");
 
     /**
-     * Az osztály konstruktora.
+     * Az osztaly konstruktora.
      *
-     * @param a a mező amelyre az adott label rákerül
-     * @param w a label szélessége
-     * @param h a label hosszúsága
+     * @param a a mezo amelyre az adott label rakerul
+     * @param w a label szelessege
+     * @param h a label hosszusaga
      */
     public LField(Field a, int w, int h) {
         boolean lathato = Window.get().getGame().getCurrentPlayer().getVisited().contains(a);

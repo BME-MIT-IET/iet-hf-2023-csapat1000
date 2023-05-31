@@ -73,11 +73,11 @@ public class Inventory implements java.io.Serializable {
     }
 
     /**
-     * végigiterál az inventory-ban tárolt anyagokon, és a típusát a paraméterül kapott anyagéhoz hasonlítja
-     * ha egyezést talál, akkor eltávolítja a listából az adott anyagot, és visszatér
-     * biztonság kedvéért a ciklus után is visszatér
+     * vegigiteral az inventory-ban tarolt anyagokon, es a tipusat a parameterul kapott anyagehoz hasonlitja
+     * ha egyezest talal, akkor eltavolitja a listabol az adott anyagot, es visszater
+     * biztonsag kedveert a ciklus utan is visszater
      *
-     * @param m paraméterül kap egy Material-t, amit el kell távolítani az inventory-ból
+     * @param m parameterul kap egy Material-t, amit el kell tavolitani az inventory-bol
      */
     public void RemoveMaterial(Material m) {
         for (int i = 0; i < materials.size(); i++) {
@@ -95,13 +95,13 @@ public class Inventory implements java.io.Serializable {
 
 
     /**
-     * Végigiterál az inventory-ban tárolt anyagokon, és megnézi, hogy található-e közte olyan
-     * amit paraméterül kapott. Ha igen, akkor true-val tér vissza.
-     * Amennyiben végigiterált a listán anélkül, hogy egy egyezést is talált volna
-     * false-val tér vissza
+     * Vegigiteral az inventory-ban tarolt anyagokon, es megnezi, hogy talalhato-e kozte olyan
+     * amit parameterul kapott. Ha igen, akkor true-val ter vissza.
+     * Amennyiben vegigiteralt a listan anelkul, hogy egy egyezest is talalt volna
+     * false-val ter vissza
      *
-     * @param m Materialt kap paraméterül
-     * @return visszatér azzal, hogy az inventory-ban található-e olyan anyag, amit paraméterül kapott
+     * @param m Materialt kap parameterul
+     * @return visszater azzal, hogy az inventory-ban talalhato-e olyan anyag, amit parameterul kapott
      */
     public boolean Contains(Material m) {
         for (Material material : materials) {
@@ -113,13 +113,13 @@ public class Inventory implements java.io.Serializable {
     }
 
     /**
-     * Végigiterál az inventory-ban tárolt felszereléseken, és megnézi, hogy található-e közte olyan
-     * amit paraméterül kapott. Ha igen, akkor true-val tér vissza.
-     * Amennyiben végigiterált a listán anélkül, hogy egy egyezést is talált volna
-     * false-val tér vissza
+     * Vegigiteral az inventory-ban tarolt felszereleseken, es megnezi, hogy talalhato-e kozte olyan
+     * amit parameterul kapott. Ha igen, akkor true-val ter vissza.
+     * Amennyiben vegigiteralt a listan anelkul, hogy egy egyezest is talalt volna
+     * false-val ter vissza
      *
-     * @param g Gear-t kap paraméterül
-     * @return visszatér azzal, hogy az inventory-ban található-e olyan felszerelés, amit paraméterül kapott
+     * @param g Gear-t kap parameterul
+     * @return visszater azzal, hogy az inventory-ban talalhato-e olyan felszereles, amit parameterul kapott
      */
     public boolean Contains(Gear g) {
         for (Gear gear : gears) {

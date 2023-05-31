@@ -183,7 +183,7 @@ public class Window extends JFrame {
         panel.setLayout(boxlayout);
         panel.setBorder(new EmptyBorder(new Insets(30, 10, 30, 10)));
 
-        //label hozzáadása
+        //label hozzaadasa
         JLabel label = new JLabel();
         label.setText("Add meg, hogy hany jatekos szeretne jatszani a jatekot (min 2, max 8)");
         panel.add(label);
@@ -216,13 +216,13 @@ public class Window extends JFrame {
         GridBagLayout layout = new GridBagLayout();
         setLayout(layout);
 
-        //tulajdonságok hozzáadása
+        //tulajdonsagok hozzaadasa
         setSize(1200, 800);
         setLocation(0, 0);
 
-        //új játék létrehozása
+        //uj jatek letrehozasa
         game = new Game(jatekosok); //letrehozzuk a game osztalyt
-        //Init függvények meghívása
+        //Init fuggvenyek meghivasa
         pMapInit(layout);                       //
         panelsInit(layout);
         game.start();
@@ -231,13 +231,13 @@ public class Window extends JFrame {
     }
 
     /**
-     * A térkép inicializálása. Beállítja a méreteket, hozzáadja a fieldeket.
+     * A terkep inicializalasa. Beallitja a mereteket, hozzaadja a fieldeket.
      * @param layout
      */
     private void pMapInit(GridBagLayout layout) {
         pMap = new JPanel();                        //inicializaljuk a terkep paneljat
         GridBagConstraints c = new GridBagConstraints();
-        //tulajdonságok hozzáadása
+        //tulajdonsagok hozzaadasa
         c.gridx = 0;
         c.gridy = 0;
         c.gridheight = GridBagConstraints.REMAINDER;
@@ -262,7 +262,7 @@ public class Window extends JFrame {
 
         GridBagConstraints cLField = new GridBagConstraints();
 
-        //fieldek elhelyezése
+        //fieldek elhelyezese
         for (int i = 0; i < fields.length; i++) {
             for (int j = 0; j < fields[i].length; j++) {
                 fieldPanels[i][j] = new JPanel();
@@ -285,7 +285,7 @@ public class Window extends JFrame {
     }
 
     /**
-     * A térkép updateeléséhez szükséges függvény
+     * A terkep updateelesehez szukseges fuggveny
      */
     public void mapUpdate() {
         Field[][] fields = game.getMap().fields;
@@ -306,7 +306,7 @@ public class Window extends JFrame {
     }
 
     /**
-     * A térkép updateeléséhez szükséges függvény. Játékosok hozzáadása
+     * A terkep updateelesehez szukseges fuggveny. Jatekosok hozzaadasa
      */
     public void mapUpdateKorvege() {
         Field[][] fields = game.getMap().fields;
@@ -330,7 +330,7 @@ public class Window extends JFrame {
     }
 
     /**
-     * A panelek incializálásához szükséges függvény
+     * A panelek incializalasahoz szukseges fuggveny
      * @param layout
      */
     private void panelsInit(GridBagLayout layout) {
@@ -338,7 +338,7 @@ public class Window extends JFrame {
 
         panels = new ArrayList<>();
 
-        //panelek hozzáadása
+        //panelek hozzaadasa
         panels.add(pAction = new PAction());
         panels.add(pAgent = new PAgent());
         panels.add(pGear = new PGear());
@@ -348,10 +348,10 @@ public class Window extends JFrame {
         GridBagConstraints c = new GridBagConstraints();
 
 
-        //info text hozzáadása
+        //info text hozzaadasa
         pInfoText = new JLabel();
 
-        //tulajdonságok hozzáadása
+        //tulajdonsagok hozzaadasa
         pInfoPanel.setBackground(new Color(173, 216, 230));
         c.gridx = 1;
         c.gridy = 0;
@@ -376,8 +376,8 @@ public class Window extends JFrame {
     }
 
     /**
-     * Függvény a mező kattintásához
-     * @param a a mező amire kattintott a játékos
+     * Fuggveny a mezo kattintasahoz
+     * @param a a mezo amire kattintott a jatekos
      */
     public void FieldClicked(Field a) {
         clearClicks();
@@ -387,8 +387,8 @@ public class Window extends JFrame {
     }
 
     /**
-     * Függvény a játékos kattintásához
-     * @param a a játékos amire kattintott a játékos
+     * Fuggveny a jatekos kattintasahoz
+     * @param a a jatekos amire kattintott a jatekos
      */
     public void PlayerClicked(Player a) {
         clearClicks();
@@ -398,8 +398,8 @@ public class Window extends JFrame {
     }
 
     /**
-     * Függvény az ágens kattintásához
-     * @param a az ágens amire kattintott a játékos
+     * Fuggveny az agens kattintasahoz
+     * @param a az agens amire kattintott a jatekos
      */
     public void AgentClicked(Agent a) {
         clearClicks();
@@ -409,8 +409,8 @@ public class Window extends JFrame {
     }
 
     /**
-     * Függvény az akciók kattintásához
-     * @param a az akció amire kattintott a játékos
+     * Fuggveny az akciok kattintasahoz
+     * @param a az akcio amire kattintott a jatekos
      */
     public void ActionClicked(String a) {
         clearClicks();
@@ -419,8 +419,8 @@ public class Window extends JFrame {
             game.interrupt();
     }
     /**
-     * Függvény az anyag kattintásához
-     * @param a az anyag amire kattintott a játékos
+     * Fuggveny az anyag kattintasahoz
+     * @param a az anyag amire kattintott a jatekos
      */
     public void MaterialClicked(Material a) {
         clearClicks();
@@ -430,8 +430,8 @@ public class Window extends JFrame {
         }
     }
     /**
-     * Függvény a kód kattintásához
-     * @param a a kód amire kattintott a játékos
+     * Fuggveny a kod kattintasahoz
+     * @param a a kod amire kattintott a jatekos
      */
     public void CodeClicked(Code a) {
         clearClicks();
@@ -441,8 +441,8 @@ public class Window extends JFrame {
     }
 
     /**
-     * Függvény a felszerelés kattintásához
-     * @param a a fegyver amire kattintott a játékos
+     * Fuggveny a felszereles kattintasahoz
+     * @param a a fegyver amire kattintott a jatekos
      */
     public void GearClicked(Gear a) {
         clearClicks();

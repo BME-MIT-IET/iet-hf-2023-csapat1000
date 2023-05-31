@@ -5,7 +5,7 @@ import model.Player;
 public class PAction extends PlayerPanel {
     @Override
     /**
-     * A labelek frissitiseert felelös.
+     * A labelek frissitiseert felelos.
      * Eltavolitja az osszes meglevo labelt, es a jatekban szereplo osszes lehetseges muvelethez
      * lethehoz egy labelt.
      * @param palyer Az aktualis jatekos.

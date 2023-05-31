@@ -11,8 +11,8 @@ public class LPlayer extends JLabel {
     private Player player;
 
     /**
-     * Kezeli a player labelen történő kattintás eseményeket.
-     * Beállítja, hogy melyik kacsára kattintottak utoljára
+     * Kezeli a player labelen torteno kattintas esemenyeket.
+     * Beallitja, hogy melyik kacsara kattintottak utoljara
      */
     public static MouseAdapter adapter = new MouseAdapter() {
         @Override
@@ -23,8 +23,8 @@ public class LPlayer extends JLabel {
     };
 
     /**
-     * Az osztály konstruktora, beállítja a label megjelenését
-     * @param a a játékban résztvevő játékosok
+     * Az osztaly konstruktora, beallitja a label megjeleneset
+     * @param a a jatekban resztvevo jatekosok
      */
     public LPlayer(Player a) {
         player = a;

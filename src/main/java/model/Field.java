@@ -21,7 +21,7 @@ public class Field implements java.io.Serializable {
         neighbours = new ArrayList<>();
         i = _i;
         j = _j;
-        s = "Üres";
+        s = "ures";
     }
 
     String getStringn(){
@@ -37,12 +37,12 @@ public class Field implements java.io.Serializable {
         ID = id;
     }
 
-    //felszerelés getter
+    //felszereles getter
     public Gear GetGear() {
         return null;
     }
 
-    // gear eltávolítása
+    // gear eltavolitasa
     public void RemoveGear() {
     }
 
@@ -99,6 +99,6 @@ public class Field implements java.io.Serializable {
     }
 
     public String getName(){
-        return "Üres mezőre léptél. ";
+        return "ures mezore leptel. ";
     }
 }

@@ -82,7 +82,7 @@ public class Map implements Serializable {
     }
 
     /**
-     * Field hozzáadás
+     * Field hozzaadas
      *
      * @param speckok
      * @param f
@@ -102,7 +102,7 @@ public class Map implements Serializable {
     }
 
     /**
-     * oblivion kód létrehozás
+     * oblivion kod letrehozas
      *
      * @return
      */
@@ -115,7 +115,7 @@ public class Map implements Serializable {
     }
 
     /**
-     * chorea kód létrehozás
+     * chorea kod letrehozas
      *
      * @return
      */
@@ -128,7 +128,7 @@ public class Map implements Serializable {
     }
 
     /**
-     * bénító ágens létrehozás
+     * benito agens letrehozas
      *
      * @return
      */
@@ -142,7 +142,7 @@ public class Map implements Serializable {
 
 
     /**
-     * Shield kós létrehozás
+     * Shield kos letrehozas
      *
      * @return
      */
@@ -155,7 +155,7 @@ public class Map implements Serializable {
     }
 
     /**
-     * Jelenlégi játékos lekérése
+     * Jelenlegi jatekos lekerese
      *
      * @return
      */
@@ -164,7 +164,7 @@ public class Map implements Serializable {
     }
 
     /**
-     * Jelenleg a pályán lévő játékos settere
+     * Jelenleg a palyan levo jatekos settere
      */
     public void setCurrentPlayer(Player p) {
         currentPlayer = p;

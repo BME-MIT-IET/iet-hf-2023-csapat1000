@@ -12,8 +12,8 @@ public class LMaterial extends JLabel {
     private Material material;
 
     /**
-     * Kezeli a material labelen történő kattintás eseményeket.
-     * Beállítja, hogy melyik nyersanyagra kattintottak utoljára
+     * Kezeli a material labelen torteno kattintas esemenyeket.
+     * Beallitja, hogy melyik nyersanyagra kattintottak utoljara
      */
     public static MouseAdapter adapter = new MouseAdapter() {
         @Override
@@ -24,8 +24,8 @@ public class LMaterial extends JLabel {
     };
 
     /**
-     * Az osztály konstruktora, beállítja a label megjelenését
-     * @param a a játékos által birtokolt nyersanyagok
+     * Az osztaly konstruktora, beallitja a label megjeleneset
+     * @param a a jatekos altal birtokolt nyersanyagok
      */
     public LMaterial(Material a) {
         material = a;

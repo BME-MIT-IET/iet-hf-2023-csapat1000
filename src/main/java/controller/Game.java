@@ -9,22 +9,22 @@ import java.util.List;
 import java.util.Objects;
 
 public class Game extends Thread {
-    //egy játéktérképet tárol
+    //egy jatekterkepet tarol
     private final Map map;
-    //és az összes megszerezhető genetikai kódot a játékban
+    //es az osszes megszerezheto genetikai kodot a jatekban
     private final List<Code> allCodes;
 
 
     /**
-     * A Game osztály konstruktora
+     * A Game osztaly konstruktora
      * inicializalasok tortennek benne
-     * @param jatekosok paraméterként kapja, hogy hány játékos fogja játszani a játékot
+     * @param jatekosok parameterkent kapja, hogy hany jatekos fogja jatszani a jatekot
      */
     public Game(int jatekosok) {
         super();
-        //létrehoz, egy 6x6-os játéktérképet, és ugyanekkor paraméterül adja tovabb a jatekosok szamat
+        //letrehoz, egy 6x6-os jatekterkepet, es ugyanekkor parameterul adja tovabb a jatekosok szamat
         map = new Map(6, jatekosok);
-        //tárolja az összes megszerezhető genetikai kódot a játékban
+        //tarolja az osszes megszerezheto genetikai kodot a jatekban
         allCodes = new ArrayList<>();
         //ezeket egyesevel hozzaadja
         allCodes.add(map.getChoreaCode());
@@ -67,11 +67,11 @@ public class Game extends Thread {
             this.update();
             //majd a terkep frissitese, ez az update, csak az aktiv jatekoshoz kapcsolodo mezoket frissitik a terkepen
             this.mapUpdate();
-            //műveletek (támadás, lopás, anyag felvétel, felszerelés felvétel, kraftolás, kód tanulása)
+            //muveletek (tamadas, lopas, anyag felvetel, felszereles felvetel, kraftolas, kod tanulasa)
             String action;
             do {
                 action = null;
-                Window.get().setInfo(map.currentPlayer.GetField().getName() + " Válassz egy akciót, amit végre szeretnél hajtani");
+                Window.get().setInfo(map.currentPlayer.GetField().getName() + " Valassz egy akciot, amit vegre szeretnel hajtani");
                 //varunk egy akcio label kattintasra
                 while (action == null) {
                     action = getAction();
@@ -87,7 +87,7 @@ public class Game extends Thread {
                             update();
                             break;
                         }
-                        Window.get().setInfo("Válassz egy játékost!");
+                        Window.get().setInfo("Valassz egy jatekost!");
                         Player playerClicked = getPlayer();
                         Window.get().setInfo("Valassz egy felhasznalhato agenst!");
                         Agent agentClicked = getAgent();
@@ -107,14 +107,14 @@ public class Game extends Thread {
                             update();
                             break;
                         }
-                        Window.get().setInfo("Válassz egy játékost!");
+                        Window.get().setInfo("Valassz egy jatekost!");
                         Player playerClicked1 = getPlayer();
                         // ha a masiknak nincsenek eszkozei
                         if (playerClicked1.GetInventory().GetGears().isEmpty()) {
                             update();
                             break;
                         }
-                        Window.get().setInfo("Válassz egy fegyvert!");
+                        Window.get().setInfo("Valassz egy fegyvert!");
                         //atallitjuk a paneleket a celpont fegyvereire
                         Window.get().stealGearSet(playerClicked1);
                         Gear toSteal = getGear();
@@ -133,14 +133,14 @@ public class Game extends Thread {
                             update();
                             break;
                         }
-                        Window.get().setInfo("Válassz egy játékost!");
+                        Window.get().setInfo("Valassz egy jatekost!");
                         Player playerClicked2 = getPlayer();
                         //ha a celpontnak nincsenek nyersanyagai
                         if (playerClicked2.GetInventory().GetMaterials().isEmpty()) {
                             update();
                             break;
                         }
-                        Window.get().setInfo("Válassz egy anyagot!");
+                        Window.get().setInfo("Valassz egy anyagot!");
                         Window.get().chooseMaterial();
                         Material material = getMaterial();
                         Window.get().materialSet(map.getCurrentPlayer());
@@ -197,7 +197,7 @@ public class Game extends Thread {
                             update();
                             break;
                         }
-                        Window.get().setInfo("Mit szeretnél craftolni?");
+                        Window.get().setInfo("Mit szeretnel craftolni?");
                         Code clickedCode = getCode();
                         map.getCurrentPlayer().GetInventory().Craft(clickedCode);
                         update();
@@ -273,50 +273,50 @@ public class Game extends Thread {
     }
 
     /**
-     * Jelenleg a körön lévő játékos settere
+     * Jelenleg a koron levo jatekos settere
      *
-     * @param p visszatér a játékossal
+     * @param p visszater a jatekossal
      */
     public void setCurrentPlayer(Player p) {
         map.currentPlayer = p;
     }
 
     /**
-     * A ChooseGear() függvény akkor hívódik meg, amikor a játékos felszerelést szeretne/muszaj neki eldobni ,
-     * ha az inventory-jában 3 nál több felszerelés lenne
-     * Eldöntheti melyiket, dobja el, és így melyik 3-t tartsa meg.
+     * A ChooseGear() fuggveny akkor hivodik meg, amikor a jatekos felszerelest szeretne/muszaj neki eldobni ,
+     * ha az inventory-jaban 3 nal tobb felszereles lenne
+     * Eldontheti melyiket, dobja el, es igy melyik 3-t tartsa meg.
      */
     public void ChooseGear() {
         if (map.currentPlayer.GetInventory().GetGears().size() > 3) {
             List<Gear> g1 = map.currentPlayer.GetInventory().GetGears();
 
-            Window.get().setInfo("Melyik felszerlést szeretnéd eldobni?");
+            Window.get().setInfo("Melyik felszerlest szeretned eldobni?");
             Gear clickedGear = getGear();
             g1.remove(clickedGear);
         }
     }
 
     /**
-     * A CollectGear() függvény segítségével lehet felszerelést felvenni az óvóhelyről.
+     * A CollectGear() fuggveny segitsegevel lehet felszerelest felvenni az ovohelyrol.
      */
     public void CollectGear() {
-        //ha bénult nem tud felvenni
+        //ha benult nem tud felvenni
         if (map.getCurrentPlayer().ParalyzedFor() > 0) {
-            Window.get().setInfo("Bénultan nem vehetsz fel felszerelést.");
+            Window.get().setInfo("Benultan nem vehetsz fel felszerelest.");
             return;
         }
 
-        // a mezőn lévő felszerelés
+        // a mezon levo felszereles
         Gear g = map.getCurrentPlayer().GetField().GetGear();
 
-        /*ha valóban van felszerelés a mezőn, a játékos kiválaszthatja, hogy mit szerretne felvenni,
-        és ha az megtalálható ott, akkor felveheti
+        /*ha valoban van felszereles a mezon, a jatekos kivalaszthatja, hogy mit szerretne felvenni,
+        es ha az megtalalhato ott, akkor felveheti
          */
         if (g != null) {
             map.getCurrentPlayer().GetInventory().Add(g);
             ChooseGear();
         }
-        //ha nincs felszerelés a mezőn
+        //ha nincs felszereles a mezon
         else
             Window.get().setInfo("Nem tudsz fegyvert felvenni:((");
         Window.get().update();
@@ -333,7 +333,7 @@ public class Game extends Thread {
     public void CollectCode() {
         //ha a jatekos le van benulva
         if (map.currentPlayer.ParalyzedFor() > 0) {
-            Window.get().setInfo("Bénultan nem tapogathatsz");
+            Window.get().setInfo("Benultan nem tapogathatsz");
             return;
         }
         Field field = map.currentPlayer.GetField();
@@ -348,12 +348,12 @@ public class Game extends Thread {
     }
 
     /**
-     * Anyag felvétele
+     * Anyag felvetele
      */
     public void CollectMaterial(List<Material> required) {
         //megvizsgaljuk, hogy a jatekos le van e benulva
         if (map.getCurrentPlayer().ParalyzedFor() > 0) {
-            Window.get().setInfo("Bénultan nem vehetsz fel anyagot.");
+            Window.get().setInfo("Benultan nem vehetsz fel anyagot.");
             return;
         }
 
@@ -366,14 +366,14 @@ public class Game extends Thread {
         if (owned.size() <= (max - required.size())) {
             boolean isEnough = map.getCurrentPlayer().GetField().AquireMaterials(required);
             if (isEnough) {
-                //Itt nem a laborról kellene eltávolítani a required-et?
+                //Itt nem a laborrol kellene eltavolitani a required-et?
                 map.getCurrentPlayer().GetField().RemoveMaterials(required);
                 for (Material material : required) map.getCurrentPlayer().GetInventory().Add(material);
             } else {
-                Window.get().setInfo("Nem tudsz anyagot felvenni erről a mezőről.\n" + "Lehet, hogy nem raktáron állsz, vagy kevesebb anyag\n" + "van a raktárban, mint amennyit felvenni szeretnél. :c");
+                Window.get().setInfo("Nem tudsz anyagot felvenni errol a mezorol.\n" + "Lehet, hogy nem raktaron allsz, vagy kevesebb anyag\n" + "van a raktarban, mint amennyit felvenni szeretnel. :c");
             }
         } else {
-            Window.get().setInfo("Nincs elég hely az inventory-dban.");
+            Window.get().setInfo("Nincs eleg hely az inventory-dban.");
         }
     }
 
@@ -524,8 +524,8 @@ public class Game extends Thread {
      */
     public void Died(Player p) {
         if (p == null) return;
-        //ennyiedik eleme a playerek listának, akit törölni szeretnénk majd,
-        // de eleinte -1, ha esetleg id alapján nem talaljuk,
+        //ennyiedik eleme a playerek listanak, akit torolni szeretnenk majd,
+        // de eleinte -1, ha esetleg id alapjan nem talaljuk,
         // akkor azert megse oljon meg egy random jatekost
         int index = -1;
         for (int i = 0; i < map.players.size(); i++) {

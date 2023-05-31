@@ -11,8 +11,8 @@ public class LGear extends JLabel {
     private Gear gear;
 
     /**
-     * Kezeli a gear labelen történő kattintás eseményeket.
-     * Beállítja, hogy melyik felszerelésre kattintottak utoljára
+     * Kezeli a gear labelen torteno kattintas esemenyeket.
+     * Beallitja, hogy melyik felszerelesre kattintottak utoljara
      */
     public static MouseAdapter adapter = new MouseAdapter() {
         @Override
@@ -24,8 +24,8 @@ public class LGear extends JLabel {
 
 
     /**
-     * Az osztály konstruktora, beállítja a label megjelenését
-     * @param a a játékos által birtokolt felszerelések fajtái
+     * Az osztaly konstruktora, beallitja a label megjeleneset
+     * @param a a jatekos altal birtokolt felszerelesek fajtai
      */
     public LGear(Gear a) {
         gear = a;

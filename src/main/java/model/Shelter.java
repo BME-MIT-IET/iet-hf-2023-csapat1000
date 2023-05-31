@@ -37,6 +37,6 @@ public class Shelter extends Field {
 
     @Override
     public String getName() {
-        return "Óvóhelyre léptél. ";
+        return "ovohelyre leptel. ";
     }
 }

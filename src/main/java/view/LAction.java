@@ -9,8 +9,8 @@ public class LAction extends JLabel {
     private String action;
 
     /**
-     * Kezeli az action labelen történő kattintás eseményeket.
-     * Beállítja, hogy melyik akcióra kattintottak utoljára
+     * Kezeli az action labelen torteno kattintas esemenyeket.
+     * Beallitja, hogy melyik akciora kattintottak utoljara
      */
     public static final MouseAdapter adapter = new MouseAdapter() {
         @Override
@@ -21,8 +21,8 @@ public class LAction extends JLabel {
     };
 
     /**
-     * Az osztály konstruktora, beállítja a label megjelenését
-     * @param a a játékos által végezhető cselekvések fajtái
+     * Az osztaly konstruktora, beallitja a label megjeleneset
+     * @param a a jatekos altal vegezheto cselekvesek fajtai
      */
     public LAction(String a) {
         action = a;

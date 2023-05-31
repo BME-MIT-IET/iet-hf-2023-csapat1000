@@ -58,14 +58,14 @@ public class Player implements java.io.Serializable {
     }
 
     /**
-     * Kitöröl mindent a knowncodesból, így a játékos elfelejti az összes kódot amit eddig megtanult.
+     * Kitorol mindent a knowncodesbol, igy a jatekos elfelejti az osszes kodot amit eddig megtanult.
      */
     public void Forget() {
         knownCodes.clear();
     }
 
     /**
-     * knowncodes méretének a getttere
+     * knowncodes meretenek a getttere
      */
     public int GetKnownCodesSize() {
         return knownCodes.size();
@@ -79,10 +79,10 @@ public class Player implements java.io.Serializable {
     }
 
     /**
-     * A játékost az általa kiválasztott mezőre helyezi,
-     * abban az esetben ha ez megfelel a játékszabályoknak
+     * A jatekost az altala kivalasztott mezore helyezi,
+     * abban az esetben ha ez megfelel a jatekszabalyoknak
      *
-     * @param f a játékos által választott mező
+     * @param f a jatekos altal valasztott mezo
      */
     public boolean Move(Field f) {
         if (ParalyzedFor() > 0) {
@@ -114,7 +114,7 @@ public class Player implements java.io.Serializable {
 
     /**
      * field settere
-     * hozzáadja a mezőt a játékos lsitájához, amiben a már bejárt mezőkezt tárolja
+     * hozzaadja a mezot a jatekos lsitajahoz, amiben a mar bejart mezokezt tarolja
      */
     public void SetField(Field f) {
         field = f;
@@ -131,12 +131,12 @@ public class Player implements java.io.Serializable {
 
 
     /**
-     * A játékos által megkezdett támadásokat kezelő függvény
-     * Vezérli azt, amikor egy virológus megtámad egy másikat
-     * Ilyenkor a védő minden védőfelszerelését végignézi, és meghívja a GotAttacked függvényeiket
+     * A jatekos altal megkezdett tamadasokat kezelo fuggveny
+     * Vezerli azt, amikor egy virologus megtamad egy masikat
+     * Ilyenkor a vedo minden vedofelszereleset vegignezi, es meghivja a GotAttacked fuggvenyeiket
      *
-     * @param t A megtámadott játékos
-     * @param a A támadásra használt ágens
+     * @param t A megtamadott jatekos
+     * @param a A tamadasra hasznalt agens
      */
     public void Attack(Player t, Agent a) {
         if (this.ParalyzedFor() > 0) {
@@ -149,18 +149,18 @@ public class Player implements java.io.Serializable {
 
 
     /**
-     * A játékos ellen megkezdett támadásokat kezelő függvény
-     * Az összes lehetséges védőfelszerelésen végigmegy
-     * Az összes lehetséges védőágensen végig megy
+     * A jatekos ellen megkezdett tamadasokat kezelo fuggveny
+     * Az osszes lehetseges vedofelszerelesen vegigmegy
+     * Az osszes lehetseges vedoagensen vegig megy
      *
-     * @param s A támadást megkezdő játékos
-     * @param a A támadásra használt ágens
+     * @param s A tamadast megkezdo jatekos
+     * @param a A tamadasra hasznalt agens
      */
     public void GotAttacked(Player s, Agent a) {
         // Kivedte shield agensel
         for (var item : activeAgents) {
             if (item.ShieldFor() > 0) {
-                Window.get().setInfo("A támadás sikertelen");
+                Window.get().setInfo("A tamadas sikertelen");
                 return;
             }
         }
@@ -183,11 +183,11 @@ public class Player implements java.io.Serializable {
 
 
     /**
-     * Végig megy az összes játékosra jelenleg ható ágensen
-     * Megkeresi azt az ágenset, amely legtovább bénítja a játékos
-     * Ha nincs ilyen ágens akkor 0-val tér vissza
+     * Vegig megy az osszes jatekosra jelenleg hato agensen
+     * Megkeresi azt az agenset, amely legtovabb benitja a jatekos
+     * Ha nincs ilyen agens akkor 0-val ter vissza
      *
-     * @return a bénulás végéig hátra lévő körök száma
+     * @return a benulas vegeig hatra levo korok szama
      */
     public int ParalyzedFor() {
         int max = 0, temp;
@@ -200,11 +200,11 @@ public class Player implements java.io.Serializable {
     }
 
     /**
-     * Végig megy az összes játékosra jelenleg ható ágensen
-     * Megkeresi azt az ágenset, amely legtovább táncoltatja játékost
-     * Ha nincs ilyen ágens akkor 0-val tér vissza
+     * Vegig megy az osszes jatekosra jelenleg hato agensen
+     * Megkeresi azt az agenset, amely legtovabb tancoltatja jatekost
+     * Ha nincs ilyen agens akkor 0-val ter vissza
      *
-     * @return a táncolás elbomlásáig hátralevő körök száma
+     * @return a tancolas elbomlasaig hatralevo korok szama
      */
     public int ChoreaFor() {
         int max = 0, temp;
@@ -224,30 +224,30 @@ public class Player implements java.io.Serializable {
     }
 
     /**
-     * Ellenőrzi, hogy a két játékos ugyanazon mezőn áll-e, ha nem akkor return
-     * Ellenőri, hogy a másik játékos valóban le van-e bénulva, ha nincs akkor return
-     * Ellenőrzi, hogy az ellopni kívánt anyag benne van-e a bénult játékos inventory-jában, ha nincs akkor return
-     * Ha nincs tele a játékos inventory-ja akkor eltávolítja a bénult játékoséból az anyagot, és a miénkhez adja
+     * Ellenorzi, hogy a ket jatekos ugyanazon mezon all-e, ha nem akkor return
+     * Ellenori, hogy a masik jatekos valoban le van-e benulva, ha nincs akkor return
+     * Ellenorzi, hogy az ellopni kivant anyag benne van-e a benult jatekos inventory-jaban, ha nincs akkor return
+     * Ha nincs tele a jatekos inventory-ja akkor eltavolitja a benult jatekosebol az anyagot, es a mienkhez adja
      * Ha tele van, akkor return
      *
-     * @param t        paraméterül kapja a játékost, akitől lopni szeretnénk
-     * @param required illetve az anyagot, amit el szeretnénk lopni
+     * @param t        parameterul kapja a jatekost, akitol lopni szeretnenk
+     * @param required illetve az anyagot, amit el szeretnenk lopni
      */
     public void StealMaterial(Player t, Material required) {
         if (this.ParalyzedFor() > 0) {
-            Window.get().setInfo("Le vagy bénulva, nem csinálhatsz semmit!");
+            Window.get().setInfo("Le vagy benulva, nem csinalhatsz semmit!");
             return;
         }
         if (field != t.GetField()) {
-            Window.get().setInfo("Nem ugyanazon a mezőn álltok!");
+            Window.get().setInfo("Nem ugyanazon a mezon alltok!");
             return;
         }
         if (!(t.ParalyzedFor() > 0)) {
-            System.out.println("A játékos akitől lopni szeretnél nincs lebénulva");
+            System.out.println("A jatekos akitol lopni szeretnel nincs lebenulva");
             return;
         }
         if (!t.GetInventory().Contains(required)) {
-            Window.get().setInfo("A játékos akitől lopni szeretnél nem rendelkezik az anyaggal, amit el szeretnél venni tőle");
+            Window.get().setInfo("A jatekos akitol lopni szeretnel nem rendelkezik az anyaggal, amit el szeretnel venni tole");
             return;
         }
 
@@ -257,38 +257,38 @@ public class Player implements java.io.Serializable {
             t.GetInventory().RemoveMaterial(required);
             inventory.Add(required);
         } else {
-            Window.get().setInfo("Nincs elég hely az inventory-dban az ellopni kívánt anyag tárolásához.");
+            Window.get().setInfo("Nincs eleg hely az inventory-dban az ellopni kivant anyag tarolasahoz.");
         }
 
     }
 
     /**
-     * Akkor hívódik meg, amikor a játékos el akar lopni egy felszerelést egy lebénult játékostól
+     * Akkor hivodik meg, amikor a jatekos el akar lopni egy felszerelest egy lebenult jatekostol
      *
-     * @param t a játékos akitől lopni szeretne
-     * @param g a felszerelés amit el szeretne lopni
+     * @param t a jatekos akitol lopni szeretne
+     * @param g a felszereles amit el szeretne lopni
      */
     public void StealGear(Player t, Gear g) {
         if (this.ParalyzedFor() > 0) {
-            Window.get().setInfo("Le vagy bénulva, nem csinálhatsz semmit!");
+            Window.get().setInfo("Le vagy benulva, nem csinalhatsz semmit!");
             return;
         }
         if (field != t.GetField()) {
-            Window.get().setInfo("Nem ugyanazon a mezőn álltok!");
+            Window.get().setInfo("Nem ugyanazon a mezon alltok!");
             return;
         }
         if (!(t.ParalyzedFor() > 0)) {
-            Window.get().setInfo("A játékos akitől lopni szeretnél nincs lebénulva");
+            Window.get().setInfo("A jatekos akitol lopni szeretnel nincs lebenulva");
             return;
         }
         if (!t.GetInventory().Contains(g)) {
-            Window.get().setInfo("A játékos akitől lopni szeretnél nem rendelkezik az felszereléssel, amit el szeretnél venni tőle");
+            Window.get().setInfo("A jatekos akitol lopni szeretnel nem rendelkezik az felszerelessel, amit el szeretnel venni tole");
             return;
         }
 
         Player p1 = t.GetField().GetPlayers().get(1);
 
-        //ha zsákot lop el, le kell vonni a másik játékostól a felesleges materiálokat
+        //ha zsakot lop el, le kell vonni a masik jatekostol a felesleges materialokat
         if (g.GetPlusSize() > 1) {
             t.GetInventory().RemoveGear(g);
             t.GetInventory().GetMaterials();
@@ -306,7 +306,7 @@ public class Player implements java.io.Serializable {
                 }
             }
         }
-        //ha nem zsákot lop el
+        //ha nem zsakot lop el
         if (t.GetInventory().GetGears().contains(g)) {
             t.GetInventory().RemoveGear(g);
             p1.GetInventory().Add(g);
@@ -318,8 +318,8 @@ public class Player implements java.io.Serializable {
 
 
     /**
-     * Csökkenti a játékosra aktívan ható ágensek elbomlásáig hátra lévő idejét
-     * Minden ilyen ágens time attribútumát eggyel csökkenti
+     * Csokkenti a jatekosra aktivan hato agensek elbomlasaig hatra levo idejet
+     * Minden ilyen agens time attributumat eggyel csokkenti
      */
     public void Decrase() {
         for (var item : activeAgents)
@@ -327,14 +327,14 @@ public class Player implements java.io.Serializable {
     }
 
     /**
-     * Kezeli, amikor a játékos saját magára ken ágenst.
-     * Ilyenkor nem használja a támadás elleni lehetőségeit, hanem mindenképp elfogadja a kenést.
+     * Kezeli, amikor a jatekos sajat magara ken agenst.
+     * Ilyenkor nem hasznalja a tamadas elleni lehetosegeit, hanem mindenkepp elfogadja a kenest.
      * <p>
-     * A játékos bénult állapotban is megpróbálhat támadni
+     * A jatekos benult allapotban is megprobalhat tamadni
      */
     public void AttackOnSelf(Agent a) {
         if (this.ParalyzedFor() > 0) {
-            Window.get().setInfo("Sikertelen támadás");
+            Window.get().setInfo("Sikertelen tamadas");
             return;
         }
 
@@ -342,26 +342,26 @@ public class Player implements java.io.Serializable {
     }
 
     /**
-     * A játékos által kért ágenst keresi meg és törli az inventoryjából.
-     * Az input hibák kezeléséért is felelős
+     * A jatekos altal kert agenst keresi meg es torli az inventoryjabol.
+     * Az input hibak kezeleseert is felelos
      *
-     * @return a kiválsztott ágenst adja vissza, ha erre van lehetősége
-     * Ha olyan ágenst szeretnénk kérni, amivel nem rendelkezünk akkor null értéket ad vissza
+     * @return a kivalsztott agenst adja vissza, ha erre van lehetosege
+     * Ha olyan agenst szeretnenk kerni, amivel nem rendelkezunk akkor null erteket ad vissza
      * <p>
-     * A játékos olyan ágenseket is választhat, amivel nem rendelkezik az adott pillanatban, ekkor a rendszer jelzi,
-     * hogy ilyet nem képes csinálni.
+     * A jatekos olyan agenseket is valaszthat, amivel nem rendelkezik az adott pillanatban, ekkor a rendszer jelzi,
+     * hogy ilyet nem kepes csinalni.
      */
     public Agent ChooseAgent() {
         List<Agent> agents = this.GetInventory().GetAgents();
         if (agents.size() == 0) {
-            System.out.println("Nincsen felhasználható ágensed!");
+            System.out.println("Nincsen felhasznalhato agensed!");
             return null;
         }
-        System.out.println("Milyen ágenset szeretnél magadra kenni?");
-        System.out.println("1. Bénító");
-        System.out.println("2. Védő");
-        System.out.println("3. Felejtő");
-        System.out.println("4. Vitustánc");
+        System.out.println("Milyen agenset szeretnel magadra kenni?");
+        System.out.println("1. Benito");
+        System.out.println("2. Vedo");
+        System.out.println("3. Felejto");
+        System.out.println("4. Vitustanc");
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int choice = 0;
@@ -369,10 +369,10 @@ public class Player implements java.io.Serializable {
             try {
                 choice = Integer.parseInt(reader.readLine().trim());
             } catch (Exception e) {
-                System.out.println("Nem sikerult olvasni a számot.");
+                System.out.println("Nem sikerult olvasni a szamot.");
             }
             if (choice < 1 || choice > 4)
-                System.out.println("Ilyen választási lehetőség nincs.");
+                System.out.println("Ilyen valasztasi lehetoseg nincs.");
             Agent a;
             if (choice == 1) {
                 for (int i = 0; i < agents.size(); i++) {
@@ -412,21 +412,21 @@ public class Player implements java.io.Serializable {
                 }
             }
         }
-        System.out.println("Nincs ilyen ágensed!");
+        System.out.println("Nincs ilyen agensed!");
         return null;
     }
 
     /**
      * megvizsgaljuk, hogy a jatekos le van-e benulva, ha igen, akkor return
-     * ha van annyi hely az inventory-ban, hogy beleférjenek a felvenni kívánt anyagok, ha nem, akkor return
-     * Akkor hívjuk, ha a játékos anyagot vesz fel
-     * leellenőrizzük, hogy valóban van-e annyi anyag a raktárban, mint amennyit felvenni szeretnénk
-     * ha igen, akkor elvesszük a raktárból, és hozzáadjuk az inventory-hoz az anyagokat
-     * egyébként return
+     * ha van annyi hely az inventory-ban, hogy beleferjenek a felvenni kivant anyagok, ha nem, akkor return
+     * Akkor hivjuk, ha a jatekos anyagot vesz fel
+     * leellenorizzuk, hogy valoban van-e annyi anyag a raktarban, mint amennyit felvenni szeretnenk
+     * ha igen, akkor elvesszuk a raktarbol, es hozzaadjuk az inventory-hoz az anyagokat
+     * egyebkent return
      */
     public void CollectMaterial(List<Material> required) {
         if (this.ParalyzedFor() > 0) {
-            System.out.println("Bénultan nem vehetsz fel anyagot.");
+            System.out.println("Benultan nem vehetsz fel anyagot.");
             return;
         }
 
@@ -436,22 +436,22 @@ public class Player implements java.io.Serializable {
         if (owned.size() <= (max - required.size())) {
             boolean isEnough = field.AquireMaterials(required);
             if (isEnough) {
-                //Itt nem a laborról kellene eltávolítani a required-et?
+                //Itt nem a laborrol kellene eltavolitani a required-et?
                 field.RemoveMaterials(required);
                 for (Material material : required) inventory.Add(material);
                 return;
             } else {
-                System.out.println("Nem tudsz anyagot felvenni erről a mezőről.\n" + "Lehet, hogy nem raktáron állsz, vagy kevesebb anyag\n" + "van a raktárban, mint amennyit felvenni szeretnél. :c");
+                System.out.println("Nem tudsz anyagot felvenni errol a mezorol.\n" + "Lehet, hogy nem raktaron allsz, vagy kevesebb anyag\n" + "van a raktarban, mint amennyit felvenni szeretnel. :c");
                 return;
             }
         } else {
-            System.out.println("Nincs elég hely az inventory-dban.");
+            System.out.println("Nincs eleg hely az inventory-dban.");
             return;
         }
     }
 
     /**
-     * a játékos eddig meglátogatott mezőihez ad egy új elemet.
+     * a jatekos eddig meglatogatott mezoihez ad egy uj elemet.
      */
     public void addVisited(Field f) {
         if (f != null && !visited.contains(f))
@@ -459,8 +459,8 @@ public class Player implements java.io.Serializable {
     }
 
     /**
-     * Megtámad egy adott játékost egy kiválasztott eszközzel. A p paraméter a cél játékos, a g pedig az az eszköz, amivel támadja.
-     * Ez a támadó eszköz Applied(p: Player) metódusát fogja meghívni, ami a legtöbb eszköznél nem csinál semmit, csak amivel lehet támadni (jelenleg ez csak az Axe).
+     * Megtamad egy adott jatekost egy kivalasztott eszkozzel. A p parameter a cel jatekos, a g pedig az az eszkoz, amivel tamadja.
+     * Ez a tamado eszkoz Applied(p: Player) metodusat fogja meghivni, ami a legtobb eszkoznel nem csinal semmit, csak amivel lehet tamadni (jelenleg ez csak az Axe).
      *
      * @param p A jatekos akit megtamadunk
      * @param g Az eszkoz amivel meg lesz tamadva

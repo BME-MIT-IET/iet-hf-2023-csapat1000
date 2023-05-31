@@ -27,12 +27,12 @@ public class Storage extends Field {
 
     /**
      * Masolatot keszit a felvenni kivant es a raktarban talalhato anyagok listajarol
-     * Ezeket iteral végig
+     * Ezeket iteral vegig
      * Iteratort hasznal, hogy biztonsagosan tudjon onnan kivenni, amit eppen vegigjar
-     * Ha egyezik a ket tipus, kiveszi mindket helyrol az anyagot es kitor a belso ciklusbol, majd a következő required elemre ugrik
+     * Ha egyezik a ket tipus, kiveszi mindket helyrol az anyagot es kitor a belso ciklusbol, majd a kovetkezo required elemre ugrik
      * Ha nem, akkor a  kovetkezo raktarban talalhato anyagra ugrik
      * Ha maradt elem a required listabol, akkor false-val ter vissza
-     * Ha nem maradt, akkor true-val térünk vissza
+     * Ha nem maradt, akkor true-val terunk vissza
      *
      * @param m parameterkent kapja a raktarbol a jatekos altal kesobb kivenni kivant anyagok listajat
      * @return es visszater egy boolean valtozoval, attol fuggoen, hogy talalhatoak-e a raktarban a parameterkent kapott anyagoknak megfelelo anyagok
@@ -61,9 +61,9 @@ public class Storage extends Field {
     /**
      * Feladata a parameterkent kapott anyagok listajanak megfelelo mennyisegu anyagot eltavolitani a raktarbol
      * Masolatot keszit az eltavolitani kivant es a raktarban talalhato anyagok listajarol
-     * Ezeket iteral végig
+     * Ezeket iteral vegig
      * Iteratort hasznal, hogy biztonsagosan tudjon onnan kivenni, amit eppen vegigjar
-     * Ha egyezik a ket tipus, kiveszi mindket helyrol az anyagot es kitor a belso ciklusbol, majd a következő eltavolitando elemre ugrik
+     * Ha egyezik a ket tipus, kiveszi mindket helyrol az anyagot es kitor a belso ciklusbol, majd a kovetkezo eltavolitando elemre ugrik
      * Ha nem, akkor a  kovetkezo raktarban talalhato anyagra ugrik
      *
      * @param rid parameterkent kapja a raktarbol a jatekos altal eltavolitani kivant anyagok listajat
@@ -99,6 +99,6 @@ public class Storage extends Field {
 
     @Override
     public String getName(){
-        return "Raktárra léptél. ";
+        return "Raktarra leptel. ";
     }
 }

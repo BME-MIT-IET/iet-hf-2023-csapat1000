@@ -6,7 +6,7 @@ public class Lab extends Field {
     public Lab(int _i, int _j, Code c) {
         super(_i, _j);
         this.code = c;
-        s = "Laborra léptél";
+        s = "Laborra leptel";
     }
 
     @Override
@@ -19,6 +19,6 @@ public class Lab extends Field {
 
     @Override
     public String getName(){
-        return "Laborra léptél. ";
+        return "Laborra leptel. ";
     }
 }

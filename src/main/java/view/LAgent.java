@@ -11,8 +11,8 @@ public class LAgent extends JLabel {
     private Agent agent;
 
     /**
-     * Kezeli az agent labelen történő kattintás eseményeket.
-     * Beállítja, hogy melyik ágensre kattintottak utoljára
+     * Kezeli az agent labelen torteno kattintas esemenyeket.
+     * Beallitja, hogy melyik agensre kattintottak utoljara
      */
     public static MouseAdapter adapter = new MouseAdapter() {
         @Override
@@ -23,8 +23,8 @@ public class LAgent extends JLabel {
     };
 
     /**
-     * Az osztály konstruktora, beállítja a label megjelenését
-     * @param a a játékos által birtokolt ágensek fajtái
+     * Az osztaly konstruktora, beallitja a label megjeleneset
+     * @param a a jatekos altal birtokolt agensek fajtai
      */
     public LAgent(Agent a) {
         agent = a;

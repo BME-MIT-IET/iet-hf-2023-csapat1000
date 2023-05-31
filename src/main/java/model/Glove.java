@@ -22,7 +22,7 @@ public class Glove extends Gear {
         }
 
         // Ha nem talalt, akkor kivedte es visszatamadott
-        Window.get().setInfo("Visszatámadtak!!!!!!");
+        Window.get().setInfo("Visszatamadtak!!!!!!");
         s.GotAttacked(t, a);
         return true;
     }
