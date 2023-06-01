@@ -6,7 +6,7 @@ public class Axe extends Gear {
     @Override
     public void Applied(Player p) {
         if (!used) {
-            p.Died();
+            p.died();
             used = true;
         }
     }

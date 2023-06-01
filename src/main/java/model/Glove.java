@@ -12,7 +12,7 @@ public class Glove extends Gear {
     public boolean Attacked(Player s, Player t, Agent a) {
 
         // Vegigmegy a tamado itemein
-        List<Gear> sGears = s.GetInventory().GetGears();
+        List<Gear> sGears = s.getInventory().GetGears();
         for (Gear elso : sGears) {
             // Ha talal olyat mint sajat maga, akkor kiveszi a tamadotol
             if (elso.GetType().equals(this.GetType()) && !elso.IsUsed()) {
@@ -23,7 +23,7 @@ public class Glove extends Gear {
 
         // Ha nem talalt, akkor kivedte es visszatamadott
         Window.get().setInfo("Visszatamadtak!!!!!!");
-        s.GotAttacked(t, a);
+        s.gotAttacked(t, a);
         return true;
     }
 

@@ -12,13 +12,13 @@ public class BearLab extends Lab {
     @Override
     public void AddPlayer(Player p) {
         super.AddPlayer(p);
-        List<Gear> backup = new ArrayList<>(p.GetInventory().GetGears());
+        List<Gear> backup = new ArrayList<>(p.getInventory().GetGears());
         Player temp = new Player();
-        temp.GetInventory().Add(new Glove());
-        temp.GetInventory().Add(new Glove());
-        temp.GetInventory().Add(new Glove());
-        p.GotAttacked(temp, new Bear());
-        p.GetInventory().SetGears(backup);
+        temp.getInventory().Add(new Glove());
+        temp.getInventory().Add(new Glove());
+        temp.getInventory().Add(new Glove());
+        p.gotAttacked(temp, new Bear());
+        p.getInventory().SetGears(backup);
     }
 
     @Override

@@ -276,7 +276,7 @@ public class Window extends JFrame {
                 fieldPanels[i][j].setLayout(new GridBagLayout());
                 fieldPanels[i][j].add(new LField(fields[i][j], w, h), cLField);
 
-                if (game.getMap().currentPlayer.GetField() == fields[i][j]) {
+                if (game.getMap().currentPlayer.getField() == fields[i][j]) {
                     fieldPanels[i][j].remove(0);
                     fieldPanels[i][j].add(new LPlayer(game.getMap().currentPlayer));
                 }
@@ -295,7 +295,7 @@ public class Window extends JFrame {
             int y = game.getCurrentPlayer().getVisited().get(i).j;
             fieldPanels[x][y].removeAll();
             fieldPanels[x][y].add(new LField(fields[x][y], w, h), new GridBagConstraints());
-            if (game.getMap().currentPlayer.GetField() == fields[x][y]) {
+            if (game.getMap().currentPlayer.getField() == fields[x][y]) {
                 fieldPanels[x][y].removeAll();
                 // Hozzaad minden mezon levo jatekost, egymas melle
                 for (var player : fields[x][y].GetPlayers())
@@ -315,7 +315,7 @@ public class Window extends JFrame {
             for (int j = 0; j < fields[i].length; j++) {
                 fieldPanels[i][j].removeAll();
                 fieldPanels[i][j].add(new LField(fields[i][j], w, h), new GridBagConstraints());
-                if (game.getMap().currentPlayer.GetField() == fields[i][j]) {
+                if (game.getMap().currentPlayer.getField() == fields[i][j]) {
                     fieldPanels[i][j].removeAll();
                     // Hozzaad minden mezon levo jatekost, egymas melle
                     for (var player : fields[i][j].GetPlayers())
