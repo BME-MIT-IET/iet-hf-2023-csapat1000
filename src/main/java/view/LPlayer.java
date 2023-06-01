@@ -15,7 +15,7 @@ public class LPlayer extends JLabel {
      * Kezeli a player labelen torteno kattintas esemenyeket.
      * Beallitja, hogy melyik kacsara kattintottak utoljara
      */
-    public static MouseAdapter adapter = new MouseAdapter() {
+    public final static MouseAdapter adapter = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
             LPlayer source = (LPlayer) e.getSource();

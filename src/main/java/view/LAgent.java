@@ -14,7 +14,7 @@ public class LAgent extends JLabel {
      * Kezeli az agent labelen torteno kattintas esemenyeket.
      * Beallitja, hogy melyik agensre kattintottak utoljara
      */
-    public static MouseAdapter adapter = new MouseAdapter() {
+    public final static MouseAdapter adapter = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
             LAgent source = (LAgent) e.getSource();

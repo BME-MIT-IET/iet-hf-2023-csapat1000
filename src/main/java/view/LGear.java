@@ -14,7 +14,7 @@ public class LGear extends JLabel {
      * Kezeli a gear labelen torteno kattintas esemenyeket.
      * Beallitja, hogy melyik felszerelesre kattintottak utoljara
      */
-    public static MouseAdapter adapter = new MouseAdapter() {
+    public final static MouseAdapter adapter = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
             LGear source = (LGear) e.getSource();
