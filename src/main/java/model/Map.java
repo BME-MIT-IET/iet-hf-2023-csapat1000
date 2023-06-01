@@ -21,7 +21,7 @@ public class Map implements Serializable {
 
         Random rnd = new Random();
         for (var item : players) {
-            item.SetField(fields[rnd.nextInt(fields.length)][rnd.nextInt(fields[0].length)]);
+            item.setField(fields[rnd.nextInt(fields.length)][rnd.nextInt(fields[0].length)]);
         }
     }
 

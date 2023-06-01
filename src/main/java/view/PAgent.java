@@ -12,7 +12,7 @@ public class PAgent extends PlayerPanel {
      * */
     public void update(Player player) {
         removeAll();
-        for (var item : player.GetInventory().GetAgents())
+        for (var item : player.getInventory().GetAgents())
             add(new LAgent(item));
         revalidate();
         repaint();

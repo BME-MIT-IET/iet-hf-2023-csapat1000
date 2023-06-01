@@ -11,7 +11,7 @@ public class PCode extends PlayerPanel {
      * */
     public void update(Player player) {
         removeAll();
-        for (var item : player.GetKnownCodes())
+        for (var item : player.getKnownCodes())
             add(new LCode(item));
         revalidate();
         repaint();

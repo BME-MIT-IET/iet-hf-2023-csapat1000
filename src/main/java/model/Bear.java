@@ -15,7 +15,7 @@ public class Bear extends Agent {
         f.ClearMaterial();
         for (var target : f.GetPlayers()) {
             if (target != p)
-                p.Attack(target, new Bear());
+                p.attack(target, new Bear());
         }
     }
 
