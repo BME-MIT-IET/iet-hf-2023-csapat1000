@@ -219,6 +219,8 @@ public class Game extends Thread {
                         //es a paneleket is updatelni kell
                         update();
                         break;
+                    default:
+                        break;
                 }
             } while (!action.equals("kor vege"));
         }
