@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
 
 public class LField extends JLabel {
     private Field field;
@@ -23,10 +24,10 @@ public class LField extends JLabel {
     };
 
     //A mezok megjelenitesehez hasznalt kulonbozo kepek
-    private static ImageIcon negy = new ImageIcon("4.png");
-    private static ImageIcon nyolc = new ImageIcon("8.png");
-    private static ImageIcon negyF = new ImageIcon("4f.png");
-    private static ImageIcon nyolcF = new ImageIcon("8f.png");
+    private static ImageIcon negy = new ImageIcon(Objects.requireNonNull(LField.class.getResource("/4.png")));
+    private static ImageIcon nyolc = new ImageIcon(Objects.requireNonNull(LField.class.getResource("/8.png")));
+    private static ImageIcon negyF = new ImageIcon(Objects.requireNonNull(LField.class.getResource("/4f.png")));
+    private static ImageIcon nyolcF = new ImageIcon(Objects.requireNonNull(LField.class.getResource("/8f.png")));
 
     /**
      * Az osztaly konstruktora.
@@ -53,7 +54,7 @@ public class LField extends JLabel {
             // Lathato, nem sima mezo
             else {
                 String path = field.getPath();
-                ImageIcon temp = new ImageIcon(path);
+                ImageIcon temp = new ImageIcon(LField.class.getResource("/" + path));
                 temp.setImage(temp.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH));
                 setIcon(temp);
             }

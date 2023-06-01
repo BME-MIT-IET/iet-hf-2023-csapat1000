@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
 
 public class LPlayer extends JLabel {
     private Player player;
@@ -28,7 +29,7 @@ public class LPlayer extends JLabel {
      */
     public LPlayer(Player a) {
         player = a;
-        ImageIcon pic = new ImageIcon("p" + (a.getID() + 1) + ".png");
+        ImageIcon pic = new ImageIcon(Objects.requireNonNull(LPlayer.class.getResource("/p" + (a.getID() + 1) + ".png")));
         pic.setImage(pic.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
         setIcon(pic);
         addMouseListener(adapter);
