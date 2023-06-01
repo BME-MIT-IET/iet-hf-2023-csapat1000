@@ -7,15 +7,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.mockito.Mock;
-import static org.mockito.Mockito.when;
-
-
 public class TestGame {
 
     private final static int numOfPlayers = 2;
-    private static Game game;
-    private static Map map;
+    private Game game;
+    private Map map;
 
     @BeforeEach
     public void setupGame() {
