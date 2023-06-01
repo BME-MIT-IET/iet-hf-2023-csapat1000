@@ -3,7 +3,7 @@ package model;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestMaterials {
+public class TestMaterial {
     @Test
     public void testAllMaterialTypes() {
         Amino amino = new Amino();
