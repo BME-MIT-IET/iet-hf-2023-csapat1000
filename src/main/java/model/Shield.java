@@ -2,7 +2,7 @@ package model;
 
 public class Shield extends Agent {
     @Override
-    public int ShieldFor() {
+    public int shieldFor() {
         return time;
     }
 

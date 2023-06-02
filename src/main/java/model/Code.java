@@ -11,7 +11,7 @@ public class Code implements java.io.Serializable {
         result = res;
     }
 
-    public List<Material> GetRequired() {
+    public List<Material> getRequired() {
         return required;
     }
 
@@ -19,7 +19,7 @@ public class Code implements java.io.Serializable {
         this.required = required;
     }
 
-    public Agent GetResult() {
+    public Agent getResult() {
         return result;
     }
 }

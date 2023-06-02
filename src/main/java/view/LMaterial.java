@@ -15,7 +15,7 @@ public class LMaterial extends JLabel {
      * Kezeli a material labelen torteno kattintas esemenyeket.
      * Beallitja, hogy melyik nyersanyagra kattintottak utoljara
      */
-    public static MouseAdapter adapter = new MouseAdapter() {
+    public final static MouseAdapter adapter = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
             LMaterial source = (LMaterial) e.getSource();

@@ -6,8 +6,8 @@ public class Oblivion extends Agent {
     }
 
     @Override
-    public void Applied(Player p) {
-        p.Forget();
+    public void applied(Player p) {
+        p.forget();
     }
 
     @Override

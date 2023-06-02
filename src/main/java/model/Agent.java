@@ -3,26 +3,26 @@ package model;
 public abstract class Agent implements java.io.Serializable {
     protected int time = 3;
 
-    public void Applied(Player p) {
+    public void applied(Player p) {
     }
 
-    public void Decrase() {
+    public void decrase() {
         time--;
     }
 
-    public int ChoreaFor() {
+    public int choreaFor() {
         return 0;
     }
 
-    public int ParalyzedFor() {
+    public int paralyzedFor() {
         return 0;
     }
 
-    public int ShieldFor() {
+    public int shieldFor() {
         return 0;
     }
 
-    public void Moved(Player p, Field f) {
+    public void moved(Player p, Field f) {
     }
 
     public Agent clone() {
