@@ -30,7 +30,7 @@ public class TestGear {
     public void testGloveOnInint() {
         //Alapallapot
         assertEquals(3,glove.getLife());
-        assertFalse(glove.IsUsed());
+        assertFalse(glove.isUsed());
     }
 
     @Test
@@ -41,35 +41,35 @@ public class TestGear {
         List<Gear> gears = new ArrayList<>();
         gears.add(glove);
 
-        when(p1.GetInventory()).thenReturn(p1Inv);
+        when(p1.getInventory()).thenReturn(p1Inv);
         when(p1Inv.GetGears()).thenReturn(gears);
 
-        assertFalse(glove.Attacked(p1,p2,agent));
+        assertFalse(glove.attacked(p1,p2,agent));
     }
 
     @Test
     public void testGloveUse() {
         //Alapallapot
         assertEquals(3,glove.getLife());
-        assertFalse(glove.IsUsed());
+        assertFalse(glove.isUsed());
 
-        glove.Use();
+        glove.use();
 
         assertEquals(2,glove.getLife());
-        assertTrue(glove.IsUsed());
+        assertTrue(glove.isUsed());
     }
 
     @Test
     public void testAxeOnInit() {
-        assertFalse(axe.IsUsed());
+        assertFalse(axe.isUsed());
     }
 
     @Test
     public void testAxeUse() {
-        Mockito.doNothing().when(p1).Died();
+        Mockito.doNothing().when(p1).died();
 
-        axe.Applied(p1);
+        axe.applied(p1);
 
-        assertTrue(axe.IsUsed());
+        assertTrue(axe.isUsed());
     }
 }

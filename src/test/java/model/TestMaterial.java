@@ -9,7 +9,7 @@ public class TestMaterial {
         Amino amino = new Amino();
         Nukleo nukleo = new Nukleo();
 
-        assertEquals("amino", amino.GetType());
-        assertEquals("nukleo", nukleo.GetType());
+        assertEquals("amino", amino.getType());
+        assertEquals("nukleo", nukleo.getType());
     }
 }

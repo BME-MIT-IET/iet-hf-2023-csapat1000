@@ -35,7 +35,7 @@ public class TestGame {
     @Test
     public void testPlayerDying() {
         //Az elso jatekos halalanak szimulalasa
-        game.Died(map.players.get(0));
+        game.died(map.players.get(0));
 
         assertEquals(1,map.players.size());
     }
@@ -46,7 +46,7 @@ public class TestGame {
         Player invalidPlayer = new Player();
         invalidPlayer.setID(3);
 
-        game.Died(invalidPlayer);
+        game.died(invalidPlayer);
         assertEquals(2,map.players.size());
     }
 

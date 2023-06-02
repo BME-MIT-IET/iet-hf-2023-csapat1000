@@ -21,20 +21,20 @@ public class TestField {
 
     private void putPlayerOnField(Field f) {
         Player p = new Player();
-        p.SetField(f);
+        p.setField(f);
     }
 
     @Test
     public void testNormalFieldOnInit() {
         //A normal mezon nincs sem felszereles, sem kod
-        assertNull(normalField.GetGear());
-        assertNull(normalField.GetCode());
+        assertNull(normalField.getGear());
+        assertNull(normalField.getCode());
 
         //Mivel nem a map hozta letre, nincsen szomszedja sem
-        assertEquals(0,normalField.GetNeighbours().size());
+        assertEquals(0,normalField.getNeighbours().size());
 
         //Alapertelmezetten nem all rajta jatekos
-        assertEquals(0,normalField.GetPlayers().size());
+        assertEquals(0,normalField.getPlayers().size());
     }
 
     @Test
@@ -46,10 +46,10 @@ public class TestField {
         putPlayerOnField(normalField);
 
         //Lepes szimulalasa
-        Player playerOnField = normalField.GetPlayers().get(0);
-        playerOnField.Move(normalField2);
+        Player playerOnField = normalField.getPlayers().get(0);
+        playerOnField.move(normalField2);
 
-        assertEquals(0,normalField.GetPlayers().size());
-        assertEquals(1,normalField2.GetPlayers().size());
+        assertEquals(0,normalField.getPlayers().size());
+        assertEquals(1,normalField2.getPlayers().size());
     }
 }
