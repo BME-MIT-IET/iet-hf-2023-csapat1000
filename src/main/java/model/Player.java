@@ -33,8 +33,6 @@ public class Player implements java.io.Serializable {
         return ID;
     }
 
-    public Field getField(){return field;}
-
     @Override
     public String toString() {
         return String.valueOf(ID);

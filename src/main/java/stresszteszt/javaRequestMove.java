@@ -35,11 +35,11 @@ public class javaRequestMove extends AbstractJavaSamplerClient {
             Game game = (Game)props.get("game");
             Map map = game.getMap();
             Field currentField = map.getCurrentPlayer().getField();
-            List<Field> n = currentField.GetNeighbours();
+            List<Field> n = currentField.getNeighbours();
             Random random = new Random();
             int randomIndex = random.nextInt(n.size());
             Field field = n.get(randomIndex);
-            map.getCurrentPlayer().Move(field);
+            map.getCurrentPlayer().move(field);
             success = true;
         } catch (Exception e) {
             success = false;
