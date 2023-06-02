@@ -12,7 +12,7 @@ public class PMaterial extends PlayerPanel {
      * */
     public void update(Player player) {
         removeAll();
-        for (var item : player.GetInventory().GetMaterials())
+        for (var item : player.getInventory().GetMaterials())
             add(new LMaterial(item));
         revalidate();
         repaint();

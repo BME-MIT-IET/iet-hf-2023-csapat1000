@@ -21,7 +21,7 @@ public class Map implements Serializable {
 
         Random rnd = new Random();
         for (var item : players) {
-            item.SetField(fields[rnd.nextInt(fields.length)][rnd.nextInt(fields[0].length)]);
+            item.setField(fields[rnd.nextInt(fields.length)][rnd.nextInt(fields[0].length)]);
         }
     }
 
@@ -40,23 +40,23 @@ public class Map implements Serializable {
         List<Field> speckok = new ArrayList<>();
 
         // Add labs
-        AddFieldSafe(speckok, new Lab(0, 0, getOblivionCode()), oldal);
-        AddFieldSafe(speckok, new Lab(0, 0, getChoreaCode()), oldal);
-        AddFieldSafe(speckok, new Lab(0, 0, getParalyzeCode()), oldal);
-        AddFieldSafe(speckok, new Lab(0, 0, getShieldCode()), oldal);
-        AddFieldSafe(speckok, new BearLab(0, 0, getShieldCode()), oldal);
+        addFieldSafe(speckok, new Lab(0, 0, getOblivionCode()), oldal);
+        addFieldSafe(speckok, new Lab(0, 0, getChoreaCode()), oldal);
+        addFieldSafe(speckok, new Lab(0, 0, getParalyzeCode()), oldal);
+        addFieldSafe(speckok, new Lab(0, 0, getShieldCode()), oldal);
+        addFieldSafe(speckok, new BearLab(0, 0, getShieldCode()), oldal);
 
         // Add storages
         for (int k = 0; k < 3; k++)
-            AddFieldSafe(speckok, new Storage(0, 0), oldal);
+            addFieldSafe(speckok, new Storage(0, 0), oldal);
 
         // Add shelters
-        AddFieldSafe(speckok, new Shelter(0, 0, new Axe()), oldal);
-        AddFieldSafe(speckok, new Shelter(0, 0, new Axe()), oldal);
-        AddFieldSafe(speckok, new Shelter(0, 0, new Glove()), oldal);
-        AddFieldSafe(speckok, new Shelter(0, 0, new Glove()), oldal);
-        AddFieldSafe(speckok, new Shelter(0, 0, new Bag()), oldal);
-        AddFieldSafe(speckok, new Shelter(0, 0, new Cloak()), oldal);
+        addFieldSafe(speckok, new Shelter(0, 0, new Axe()), oldal);
+        addFieldSafe(speckok, new Shelter(0, 0, new Axe()), oldal);
+        addFieldSafe(speckok, new Shelter(0, 0, new Glove()), oldal);
+        addFieldSafe(speckok, new Shelter(0, 0, new Glove()), oldal);
+        addFieldSafe(speckok, new Shelter(0, 0, new Bag()), oldal);
+        addFieldSafe(speckok, new Shelter(0, 0, new Cloak()), oldal);
 
         // Set neighbours
         for (int s = 0; s < oldal; s++) {
@@ -88,7 +88,7 @@ public class Map implements Serializable {
      * @param f
      * @param oldal
      */
-    private void AddFieldSafe(List<Field> speckok, Field f, int oldal) {
+    private void addFieldSafe(List<Field> speckok, Field f, int oldal) {
         Random rnd = new Random();
         int i, j;
         do {

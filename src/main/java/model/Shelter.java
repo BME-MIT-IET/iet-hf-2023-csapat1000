@@ -9,22 +9,22 @@ public class Shelter extends Field {
     }
 
     @Override
-    public boolean AquireGear(Gear g) {
-        return g.GetType().equals(gear.GetType());
+    public boolean aquireGear(Gear g) {
+        return g.getType().equals(gear.getType());
     }
 
     @Override
-    public Gear GetGear() {
+    public Gear getGear() {
         return this.gear;
     }
 
     @Override
-    public void RemoveGear() {
+    public void removeGear() {
         gear = null;
     }
 
     @Override
-    public void AddGear(Gear g) {
+    public void addGear(Gear g) {
         if (gear != null)
             return;
         gear = g;

@@ -50,7 +50,7 @@ public class Player implements java.io.Serializable {
      *
      * @param c a felvenni kivant kod.
      */
-    public void LearnCode(Code c) {
+    public void learnCode(Code c) {
         // minden kodbol legeljebb egy szerepelhet!
         if (knownCodes.stream().anyMatch(code -> code.getClass() == c.getClass())) {
             Window.get().setInfo("Mar megtanultad ezt a kodot!");
@@ -62,21 +62,21 @@ public class Player implements java.io.Serializable {
     /**
      * Kitorol mindent a knowncodesbol, igy a jatekos elfelejti az osszes kodot amit eddig megtanult.
      */
-    public void Forget() {
+    public void forget() {
         knownCodes.clear();
     }
 
     /**
      * knowncodes meretenek a getttere
      */
-    public int GetKnownCodesSize() {
+    public int getKnownCodesSize() {
         return knownCodes.size();
     }
 
     /**
      * knowncodes getttere
      */
-    public List<Code> GetKnownCodes() {
+    public List<Code> getKnownCodes() {
         return knownCodes;
     }
 
@@ -86,21 +86,21 @@ public class Player implements java.io.Serializable {
      *
      * @param f a jatekos altal valasztott mezo
      */
-    public boolean Move(Field f) {
-        if (ParalyzedFor() > 0) {
+    public boolean move(Field f) {
+        if (paralyzedFor() > 0) {
             return false;
         }
-        List<Field> n = field.GetNeighbours();
-        if (ChoreaFor() > 0) {
+        List<Field> n = field.getNeighbours();
+        if (choreaFor() > 0) {
             f = n.get(new Random().nextInt(n.size()));
         }
         if (!n.contains(f))
             return false;
-        f.AddPlayer(this);
+        f.addPlayer(this);
         visited.add(f);
-        field.RemovePlayer(this);
+        field.removePlayer(this);
         field = f;
-        activeAgents.forEach(agent -> agent.Moved(this, field));
+        activeAgents.forEach(agent -> agent.moved(this, field));
         return true;
     }
 
@@ -109,25 +109,25 @@ public class Player implements java.io.Serializable {
      *
      * @param a agens, amit a jatekosra kennek
      */
-    public void AddAgent(Agent a) {
+    public void addAgent(Agent a) {
         activeAgents.add(a);
-        a.Applied(this);
+        a.applied(this);
     }
 
     /**
      * field settere
      * hozzaadja a mezot a jatekos lsitajahoz, amiben a mar bejart mezokezt tarolja
      */
-    public void SetField(Field f) {
+    public void setField(Field f) {
         field = f;
-        f.AddPlayer(this);
+        f.addPlayer(this);
         visited.add(f);
     }
 
     /**
      * field gettere
      */
-    public Field GetField() {
+    public Field getField() {
         return field;
     }
 
@@ -140,12 +140,12 @@ public class Player implements java.io.Serializable {
      * @param t A megtamadott jatekos
      * @param a A tamadasra hasznalt agens
      */
-    public void Attack(Player t, Agent a) {
-        if (this.ParalyzedFor() > 0) {
+    public void attack(Player t, Agent a) {
+        if (this.paralyzedFor() > 0) {
             Window.get().setInfo("Benultan nem lehet masra agenst kenni!");
             return;
         }
-        t.GotAttacked(this, a);
+        t.gotAttacked(this, a);
         inventory.RemoveAgent(a);
     }
 
@@ -158,26 +158,26 @@ public class Player implements java.io.Serializable {
      * @param s A tamadast megkezdo jatekos
      * @param a A tamadasra hasznalt agens
      */
-    public void GotAttacked(Player s, Agent a) {
+    public void gotAttacked(Player s, Agent a) {
         // Kivedte shield agensel
         for (var item : activeAgents) {
-            if (item.ShieldFor() > 0) {
+            if (item.shieldFor() > 0) {
                 Window.get().setInfo("A tamadas sikertelen");
                 return;
             }
         }
 
-        Inventory sInv = s.GetInventory();
+        Inventory sInv = s.getInventory();
 
         // Vegigmegy a megtamadott itemein
         for (var item : inventory.GetGears())
-            if (item.Attacked(s, this, a)) {
+            if (item.attacked(s, this, a)) {
                 // Visszaallitja az s itemeit
                 sInv.clearGears();
                 inventory.clearGears();
                 return;
             }
-        AddAgent(a);
+        addAgent(a);
         sInv.clearGears();
         inventory.clearGears();
 
@@ -191,10 +191,10 @@ public class Player implements java.io.Serializable {
      *
      * @return a benulas vegeig hatra levo korok szama
      */
-    public int ParalyzedFor() {
+    public int paralyzedFor() {
         int max = 0, temp;
         for (var item : activeAgents) {
-            temp = item.ParalyzedFor();
+            temp = item.paralyzedFor();
             if (temp > max)
                 max = temp;
         }
@@ -208,10 +208,10 @@ public class Player implements java.io.Serializable {
      *
      * @return a tancolas elbomlasaig hatralevo korok szama
      */
-    public int ChoreaFor() {
+    public int choreaFor() {
         int max = 0, temp;
         for (var item : activeAgents) {
-            temp = item.ChoreaFor();
+            temp = item.choreaFor();
             if (temp > max)
                 max = temp;
         }
@@ -221,7 +221,7 @@ public class Player implements java.io.Serializable {
     /**
      * inventory gettere
      */
-    public Inventory GetInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 
@@ -235,20 +235,20 @@ public class Player implements java.io.Serializable {
      * @param t        parameterul kapja a jatekost, akitol lopni szeretnenk
      * @param required illetve az anyagot, amit el szeretnenk lopni
      */
-    public void StealMaterial(Player t, Material required) {
-        if (this.ParalyzedFor() > 0) {
+    public void stealMaterial(Player t, Material required) {
+        if (this.paralyzedFor() > 0) {
             Window.get().setInfo("Le vagy benulva, nem csinalhatsz semmit!");
             return;
         }
-        if (field != t.GetField()) {
+        if (field != t.getField()) {
             Window.get().setInfo("Nem ugyanazon a mezon alltok!");
             return;
         }
-        if (!(t.ParalyzedFor() > 0)) {
+        if (!(t.paralyzedFor() > 0)) {
             System.out.println("A jatekos akitol lopni szeretnel nincs lebenulva");
             return;
         }
-        if (!t.GetInventory().Contains(required)) {
+        if (!t.getInventory().Contains(required)) {
             Window.get().setInfo("A jatekos akitol lopni szeretnel nem rendelkezik az anyaggal, amit el szeretnel venni tole");
             return;
         }
@@ -256,7 +256,7 @@ public class Player implements java.io.Serializable {
         int max = inventory.GetMaxMaterials();
         List<Material> owned1 = inventory.GetMaterials();
         if (owned1.size() <= max - 1) {
-            t.GetInventory().RemoveMaterial(required);
+            t.getInventory().RemoveMaterial(required);
             inventory.Add(required);
         } else {
             Window.get().setInfo("Nincs eleg hely az inventory-dban az ellopni kivant anyag tarolasahoz.");
@@ -270,50 +270,50 @@ public class Player implements java.io.Serializable {
      * @param t a jatekos akitol lopni szeretne
      * @param g a felszereles amit el szeretne lopni
      */
-    public void StealGear(Player t, Gear g) {
-        if (this.ParalyzedFor() > 0) {
+    public void stealGear(Player t, Gear g) {
+        if (this.paralyzedFor() > 0) {
             Window.get().setInfo("Le vagy benulva, nem csinalhatsz semmit!");
             return;
         }
-        if (field != t.GetField()) {
+        if (field != t.getField()) {
             Window.get().setInfo("Nem ugyanazon a mezon alltok!");
             return;
         }
-        if (!(t.ParalyzedFor() > 0)) {
+        if (!(t.paralyzedFor() > 0)) {
             Window.get().setInfo("A jatekos akitol lopni szeretnel nincs lebenulva");
             return;
         }
-        if (!t.GetInventory().Contains(g)) {
+        if (!t.getInventory().Contains(g)) {
             Window.get().setInfo("A jatekos akitol lopni szeretnel nem rendelkezik az felszerelessel, amit el szeretnel venni tole");
             return;
         }
 
-        Player p1 = t.GetField().GetPlayers().get(1);
+        Player p1 = t.getField().getPlayers().get(1);
 
         //ha zsakot lop el, le kell vonni a masik jatekostol a felesleges materialokat
-        if (g.GetPlusSize() > 1) {
-            t.GetInventory().RemoveGear(g);
-            t.GetInventory().GetMaterials();
-            if (t.GetInventory().GetMaterials().size() > t.GetInventory().GetMaxMaterials()) {
-                int a = t.GetInventory().GetMaterials().size() - t.GetInventory().GetMaxMaterials();
+        if (g.getPlusSize() > 1) {
+            t.getInventory().RemoveGear(g);
+            t.getInventory().GetMaterials();
+            if (t.getInventory().GetMaterials().size() > t.getInventory().GetMaxMaterials()) {
+                int a = t.getInventory().GetMaterials().size() - t.getInventory().GetMaxMaterials();
                 List<Material> b = new ArrayList<>();
                 for (int i = 0; i < a; i++) {
-                    b.add(t.GetInventory().GetMaterials().get(t.GetInventory().GetMaxMaterials() + i));
+                    b.add(t.getInventory().GetMaterials().get(t.getInventory().GetMaxMaterials() + i));
                 }
-                t.GetInventory().RemoveMaterials(b);
+                t.getInventory().RemoveMaterials(b);
             } else {
-                p1.GetInventory().Add(g);
-                if (p1.GetInventory().GetGears().size() > 3) {
-                    Window.get().getGame().ChooseGear();
+                p1.getInventory().Add(g);
+                if (p1.getInventory().GetGears().size() > 3) {
+                    Window.get().getGame().chooseGear();
                 }
             }
         }
         //ha nem zsakot lop el
-        if (t.GetInventory().GetGears().contains(g)) {
-            t.GetInventory().RemoveGear(g);
-            p1.GetInventory().Add(g);
-            if (p1.GetInventory().GetGears().size() > 3) {
-                Window.get().getGame().ChooseGear();
+        if (t.getInventory().GetGears().contains(g)) {
+            t.getInventory().RemoveGear(g);
+            p1.getInventory().Add(g);
+            if (p1.getInventory().GetGears().size() > 3) {
+                Window.get().getGame().chooseGear();
             }
         }
     }
@@ -323,9 +323,9 @@ public class Player implements java.io.Serializable {
      * Csokkenti a jatekosra aktivan hato agensek elbomlasaig hatra levo idejet
      * Minden ilyen agens time attributumat eggyel csokkenti
      */
-    public void Decrase() {
+    public void decrase() {
         for (var item : activeAgents)
-            item.Decrase();
+            item.decrase();
     }
 
     /**
@@ -334,13 +334,13 @@ public class Player implements java.io.Serializable {
      * <p>
      * A jatekos benult allapotban is megprobalhat tamadni
      */
-    public void AttackOnSelf(Agent a) {
-        if (this.ParalyzedFor() > 0) {
+    public void attackOnSelf(Agent a) {
+        if (this.paralyzedFor() > 0) {
             Window.get().setInfo("Sikertelen tamadas");
             return;
         }
 
-        this.AddAgent(a);
+        this.addAgent(a);
     }
 
     /**
@@ -353,8 +353,8 @@ public class Player implements java.io.Serializable {
      * A jatekos olyan agenseket is valaszthat, amivel nem rendelkezik az adott pillanatban, ekkor a rendszer jelzi,
      * hogy ilyet nem kepes csinalni.
      */
-    public Agent ChooseAgent() {
-        List<Agent> agents = this.GetInventory().GetAgents();
+    public Agent chooseAgent() {
+        List<Agent> agents = this.getInventory().GetAgents();
         if (agents.size() == 0) {
             System.out.println("Nincsen felhasznalhato agensed!");
             return null;
@@ -378,7 +378,7 @@ public class Player implements java.io.Serializable {
             Agent a;
             if (choice == 1) {
                 for (int i = 0; i < agents.size(); i++) {
-                    if (agents.get(i).ParalyzedFor() > 0) {
+                    if (agents.get(i).paralyzedFor() > 0) {
                         a = agents.get(i);
                         agents.remove(i);
                         return a;
@@ -387,7 +387,7 @@ public class Player implements java.io.Serializable {
             }
             if (choice == 2) {
                 for (int i = 0; i < agents.size(); i++) {
-                    if (agents.get(i).ShieldFor() > 0) {
+                    if (agents.get(i).shieldFor() > 0) {
                         a = agents.get(i);
                         agents.remove(i);
                         return a;
@@ -396,17 +396,17 @@ public class Player implements java.io.Serializable {
             }
             if (choice == 3) {
                 for (int i = 0; i < agents.size(); i++) {
-                    if (agents.get(i).ParalyzedFor() == 0 && agents.get(i).ChoreaFor() == 0 && agents.get(i).ShieldFor() == 0) {
+                    if (agents.get(i).paralyzedFor() == 0 && agents.get(i).choreaFor() == 0 && agents.get(i).shieldFor() == 0) {
                         a = agents.get(i);
                         agents.remove(i);
-                        a.Applied(this);
+                        a.applied(this);
                         return null;
                     }
                 }
             }
             if (choice == 4) {
                 for (int i = 0; i < agents.size(); i++) {
-                    if (agents.get(i).ChoreaFor() > 0) {
+                    if (agents.get(i).choreaFor() > 0) {
                         a = agents.get(i);
                         agents.remove(i);
                         return a;
@@ -426,8 +426,8 @@ public class Player implements java.io.Serializable {
      * ha igen, akkor elvesszuk a raktarbol, es hozzaadjuk az inventory-hoz az anyagokat
      * egyebkent return
      */
-    public void CollectMaterial(List<Material> required) {
-        if (this.ParalyzedFor() > 0) {
+    public void collectMaterial(List<Material> required) {
+        if (this.paralyzedFor() > 0) {
             System.out.println("Benultan nem vehetsz fel anyagot.");
             return;
         }
@@ -436,10 +436,10 @@ public class Player implements java.io.Serializable {
         int max = inventory.GetMaxMaterials();
 
         if (owned.size() <= (max - required.size())) {
-            boolean isEnough = field.AquireMaterials(required);
+            boolean isEnough = field.aquireMaterials(required);
             if (isEnough) {
                 //Itt nem a laborrol kellene eltavolitani a required-et?
-                field.RemoveMaterials(required);
+                field.removeMaterials(required);
                 for (Material material : required) inventory.Add(material);
                 return;
             } else {
@@ -467,12 +467,12 @@ public class Player implements java.io.Serializable {
      * @param p A jatekos akit megtamadunk
      * @param g Az eszkoz amivel meg lesz tamadva
      */
-    public void AttackGear(Player p, Gear g) {
-        g.Applied(p);
+    public void attackGear(Player p, Gear g) {
+        g.applied(p);
     }
 
-    public void Died() {
-        Window.get().getGame().Died(this);
+    public void died() {
+        Window.get().getGame().died(this);
     }
 
     public List<Field> getVisited() {
