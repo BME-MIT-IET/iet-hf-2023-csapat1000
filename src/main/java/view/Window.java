@@ -24,7 +24,7 @@ public class Window extends JFrame {
     private PlayerPanel pMaterial;
     private PlayerPanel pCode;
 
-    private final int w = 100, h = 100;
+    private static final int w = 100, h = 100;
 
     private Gear gear;
 
