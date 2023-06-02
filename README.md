@@ -66,6 +66,13 @@ A legnagyobb tanulság az volt számomra, hogy egyáltalán nem egyszerű jó te
 
 Nagyon szerettem együtt dolgozni a csapattal, mert jól szét tudtuk osztani a feladatokat és jól tudtunk egymással kommunikálni. Amikor valaki elakadt valamiben, akkor segítettük egymást, emellett végig úgy éreztem, hogy mindenki nagyon sok energiát fektetett a háziba.
 
+### Kolozsvári Lilla
+A házi feladat megoldása során a kód statikus ellenőrzését végeztem. Sok olyan pluginnak néztem utána, amit eddig nem ismertem, és nagyon hasznosnak találtam őket. A jövőben is alkalmazni fogom ezeket, hogy az általam írt kódok minőségét magasabb szintre emeljem.
+
+A SpotBugs és a CheckStyle pluginok nagyon sok hibát találtak a kódbázisban, emiatt nem volt lehetőségem az összes javítására, a nagyobb hibákat viszont sikeresen ki tudtam küszöbölni.
+
+Jó volt ismételten csapatban dolgozni, örülök, hogy új ismeretségeket tudtam szerezni. A többiek nagyon segítőkészek voltak, ha valaki elakadt, és nagyon jó volt közösen összeülni ötletelni a feladaton.
+
 ---
 
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/coREwzrI)
