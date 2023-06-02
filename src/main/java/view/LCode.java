@@ -14,7 +14,7 @@ public class LCode extends JLabel {
      * Kezeli a code labelen torteno kattintas esemenyeket.
      * Beallitja, hogy melyik kodra kattintottak utoljara
      */
-    public static MouseAdapter adapter = new MouseAdapter() {
+    public final static MouseAdapter adapter = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
             LCode source = (LCode) e.getSource();
@@ -28,7 +28,7 @@ public class LCode extends JLabel {
      */
     public LCode(Code a) {
         code = a;
-        setText("Code: " + code.GetResult().getClass().getSimpleName());
+        setText("Code: " + code.getResult().getClass().getSimpleName());
         addMouseListener(adapter);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         setForeground(Color.WHITE);

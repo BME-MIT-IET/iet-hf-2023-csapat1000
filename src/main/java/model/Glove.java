@@ -9,42 +9,42 @@ public class Glove extends Gear {
     private boolean used = false;
 
     @Override
-    public boolean Attacked(Player s, Player t, Agent a) {
+    public boolean attacked(Player s, Player t, Agent a) {
 
         // Vegigmegy a tamado itemein
-        List<Gear> sGears = s.GetInventory().GetGears();
+        List<Gear> sGears = s.getInventory().GetGears();
         for (Gear elso : sGears) {
             // Ha talal olyat mint sajat maga, akkor kiveszi a tamadotol
-            if (elso.GetType().equals(this.GetType()) && !elso.IsUsed()) {
-                elso.Use();
+            if (elso.getType().equals(this.getType()) && !elso.isUsed()) {
+                elso.use();
                 return false;
             }
         }
 
         // Ha nem talalt, akkor kivedte es visszatamadott
         Window.get().setInfo("Visszatamadtak!!!!!!");
-        s.GotAttacked(t, a);
+        s.gotAttacked(t, a);
         return true;
     }
 
     @Override
-    public String GetType() {
+    public String getType() {
         return "glove";
     }
 
     @Override
-    public void Use() {
+    public void use() {
         used = true;
         life--;
     }
 
     @Override
-    public boolean IsUsed() {
+    public boolean isUsed() {
         return used;
     }
 
     @Override
-    public void ResetUsed() {
+    public void resetUsed() {
         used = false;
     }
 

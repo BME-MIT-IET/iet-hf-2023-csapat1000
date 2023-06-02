@@ -38,7 +38,7 @@ public class Storage extends Field {
      * @return es visszater egy boolean valtozoval, attol fuggoen, hogy talalhatoak-e a raktarban a parameterkent kapott anyagoknak megfelelo anyagok
      */
     @Override
-    public boolean AquireMaterials(List<Material> m) {
+    public boolean aquireMaterials(List<Material> m) {
         List<Material> required = new ArrayList<>(m);
         List<Material> owned = new ArrayList<>(materials);
 
@@ -48,7 +48,7 @@ public class Storage extends Field {
             Iterator<Material> j = owned.iterator();
             while (j.hasNext()) {
                 Material masodik = j.next();
-                if (masodik.GetType().equals(elso.GetType())) {
+                if (masodik.getType().equals(elso.getType())) {
                     i.remove();
                     j.remove();
                     break;
@@ -69,7 +69,7 @@ public class Storage extends Field {
      * @param rid parameterkent kapja a raktarbol a jatekos altal eltavolitani kivant anyagok listajat
      */
     @Override
-    public void RemoveMaterials(List<Material> rid) {
+    public void removeMaterials(List<Material> rid) {
         List<Material> required = new ArrayList<>(rid);
 
         Iterator<Material> i = required.iterator();
@@ -78,7 +78,7 @@ public class Storage extends Field {
             Iterator<Material> j = materials.iterator();
             while (j.hasNext()) {
                 Material masodik = j.next();
-                if (masodik.GetType().equals(elso.GetType())) {
+                if (masodik.getType().equals(elso.getType())) {
                     i.remove();
                     j.remove();
                     break;
@@ -88,7 +88,7 @@ public class Storage extends Field {
     }
 
     @Override
-    public void ClearMaterial() {
+    public void clearMaterial() {
         materials.clear();
     }
 

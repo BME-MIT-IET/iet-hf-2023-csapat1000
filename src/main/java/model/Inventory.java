@@ -18,8 +18,8 @@ public class Inventory implements java.io.Serializable {
     }
 
     public void Craft(Code c) {
-        List<Material> required = c.GetRequired();
-        List<Material> requiredBak = new ArrayList<>(c.GetRequired());
+        List<Material> required = c.getRequired();
+        List<Material> requiredBak = new ArrayList<>(c.getRequired());
         List<Material> materialsBak = new ArrayList<>(materials);
 
         // Vegigmegy az elerheto es a szukseges anyagokon
@@ -32,7 +32,7 @@ public class Inventory implements java.io.Serializable {
             while (j.hasNext()) {
                 Material masodik = j.next();
                 // Egyezik a ket tipus
-                if (masodik.GetType().equals(elso.GetType())) {
+                if (masodik.getType().equals(elso.getType())) {
                     // Kiveszi mindket helyrol az anyagot es kitor a belso ciklusbol,
                     // a kovetkezo szukseges elemre ugorva
                     i.remove();
@@ -48,7 +48,7 @@ public class Inventory implements java.io.Serializable {
             // Ha nem volt, akkor nem allitjuk vissza, de az eredmeny masolatat hozzaadjuk az inventoryhoz
         else {
 //            agents.add(c.GetResult().clone());
-            agents.add(c.GetResult().clone());
+            agents.add(c.getResult().clone());
         }
     }
 
@@ -81,7 +81,7 @@ public class Inventory implements java.io.Serializable {
      */
     public void RemoveMaterial(Material m) {
         for (int i = 0; i < materials.size(); i++) {
-            if (m.GetType().equals(materials.get(i).GetType())) {
+            if (m.getType().equals(materials.get(i).getType())) {
                 materials.remove(i);
                 return;
             }
@@ -105,7 +105,7 @@ public class Inventory implements java.io.Serializable {
      */
     public boolean Contains(Material m) {
         for (Material material : materials) {
-            if (m.GetType().equals(material.GetType())) {
+            if (m.getType().equals(material.getType())) {
                 return true;
             }
         }
@@ -123,7 +123,7 @@ public class Inventory implements java.io.Serializable {
      */
     public boolean Contains(Gear g) {
         for (Gear gear : gears) {
-            if (g.GetType().equals(gear.GetType())) {
+            if (g.getType().equals(gear.getType())) {
                 return true;
             }
         }
@@ -134,7 +134,7 @@ public class Inventory implements java.io.Serializable {
     public int GetMaxMaterials() {
         int db = 8;
         for (var item : gears)
-            db *= item.GetPlusSize();
+            db *= item.getPlusSize();
         return db;
     }
 
@@ -147,7 +147,7 @@ public class Inventory implements java.io.Serializable {
     }
 
     public void clearGears() {
-        gears.forEach(Gear::ResetUsed);
+        gears.forEach(Gear::resetUsed);
         gears = gears.stream().filter(a -> a.getLife() > 0).collect(Collectors.toList());
     }
 

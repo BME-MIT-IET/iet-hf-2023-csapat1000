@@ -11,7 +11,7 @@ public class PGear extends PlayerPanel {
      * */
     public void update(Player player) {
         removeAll();
-        for (var item : player.GetInventory().GetGears())
+        for (var item : player.getInventory().GetGears())
             add(new LGear(item));
         revalidate();
         repaint();
