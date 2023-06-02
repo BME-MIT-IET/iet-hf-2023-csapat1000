@@ -51,6 +51,7 @@ Mivel  főleg a felhasználói felület tesztelésével foglalkoztam, több prog
 Jobb lett volna, ha egy webes vagy mobil alkalmazást választunk tesztelésre, mert valószínűleg több eszköz állt volna rendelkezésünkre. A Java Swinget nem valami egyszerű UI tesztelni, ezen kívül magában a konkrét projektben, amit vizsgáltunk, nem voltak megfelelően szétosztva a felelősségek (a felhasználói felület működésébe bele volt égetbe a játék logikája).
 
 A csapat nagyon konstruktívan tudott együttműködik. Zökkenőmentes volt a kommunikáció, és hatékonyan tudtunk haladni a feladatokkal, akár közös, akár egyéni munkáról volt szó.
+
 ---
 
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/coREwzrI)
