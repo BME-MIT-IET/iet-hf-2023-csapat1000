@@ -65,7 +65,7 @@ public class Game extends Thread {
             //minden korben az elso feladat, hogy lepjen egyet a jatekos, helyben maradas nem opcio
             Window.get().setInfo("Valassz egy szomszedos mezot, amire lepni szeretnel");
             Field lepett = null;
-            if (map.getCurrentPlayer().ParalyzedFor() > 0) { lepett = map.getCurrentPlayer().GetField(); }
+            if (map.getCurrentPlayer().paralyzedFor() > 0) { lepett = map.getCurrentPlayer().getField(); }
             while (lepett == null) {
                 lepett = getField();
                 // Itt kene hogy booleant csinalni
@@ -101,9 +101,9 @@ public class Game extends Thread {
                         Window.get().setInfo("Valassz egy felhasznalhato agenst!");
                         Agent agentClicked = getAgent();
                         if (map.getCurrentPlayer() == playerClicked) {
-                            map.getCurrentPlayer().AttackOnSelf(agentClicked);
+                            map.getCurrentPlayer().attackOnSelf(agentClicked);
                         } else {
-                            map.getCurrentPlayer().Attack(playerClicked, agentClicked);
+                            map.getCurrentPlayer().attack(playerClicked, agentClicked);
                         }
                         update();
                         break;
