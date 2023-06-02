@@ -59,6 +59,13 @@ A játékprogram nem volt eléggé OO ezért kicsit nehéz volt megvalósítani 
 
 Csapatommal viszont teljes mértékben meg voltam elégedve, az első perctől kezdve profi módon állt hozzá mindenki a házifeladat elkészítéséhez. Szétosztottuk egyenlő részekre a feladatot, de bármikor segítségre volt szüksége egy csapattagnak, ott volt mindig valaki.
 
+### Kovács Judit
+A házi feladat megoldása során a unit tesztekkel és a kódlefedettséggel foglalkoztam. A tesztek írása során jöttem rá, hogy mennyire fontos az, hogy egy program jól megtervezett és OOP elveknek esetleg design pattern-eknek megfelelő legyen. Mivel a mi projlab házinkkal dolgoztunk, sokszor szembesültem azzal, hogy mennyi mindent elrontottunk anno és hogy sokkal jobban meg lehetett volna csinálni nagyon sok dolgot.
+
+A legnagyobb tanulság az volt számomra, hogy egyáltalán nem egyszerű jó teszteseteket kitalálni és emiatt nagyon sok idő ment el ötletelésre, amiből sokszor nem is lett teszteset.
+
+Nagyon szerettem együtt dolgozni a csapattal, mert jól szét tudtuk osztani a feladatokat és jól tudtunk egymással kommunikálni. Amikor valaki elakadt valamiben, akkor segítettük egymást, emellett végig úgy éreztem, hogy mindenki nagyon sok energiát fektetett a háziba.
+
 ---
 
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/coREwzrI)
