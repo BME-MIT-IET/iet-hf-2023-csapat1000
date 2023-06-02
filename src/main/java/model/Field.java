@@ -38,45 +38,45 @@ public class Field implements java.io.Serializable {
     }
 
     //felszereles getter
-    public Gear GetGear() {
+    public Gear getGear() {
         return null;
     }
 
     // gear eltavolitasa
-    public void RemoveGear() {
+    public void removeGear() {
     }
 
-    public Code GetCode() {
+    public Code getCode() {
         return null;
     }
 
-    public void AddPlayer(Player p) {
+    public void addPlayer(Player p) {
         players.add(p);
     }
 
-    public void RemovePlayer(Player p) {
+    public void removePlayer(Player p) {
         players.remove(p);
     }
 
-    public List<Field> GetNeighbours() {
+    public List<Field> getNeighbours() {
         return neighbours;
     }
 
-    public boolean AquireMaterials(List<Material> m) {
+    public boolean aquireMaterials(List<Material> m) {
         return false;
     }
 
-    public void RemoveMaterials(List<Material> m) {
+    public void removeMaterials(List<Material> m) {
     }
 
-    public void AddGear(Gear g) {
+    public void addGear(Gear g) {
     }
 
-    public boolean AquireGear(Gear g) {
+    public boolean aquireGear(Gear g) {
         return false;
     }
 
-    public List<Player> GetPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 
@@ -91,7 +91,7 @@ public class Field implements java.io.Serializable {
         neighbours.add(f);
     }
 
-    public void ClearMaterial() {
+    public void clearMaterial() {
     }
 
     public String getPath(){

@@ -10,8 +10,8 @@ public class BearLab extends Lab {
     }
 
     @Override
-    public void AddPlayer(Player p) {
-        super.AddPlayer(p);
+    public void addPlayer(Player p) {
+        super.addPlayer(p);
         List<Gear> backup = new ArrayList<>(p.getInventory().GetGears());
         Player temp = new Player();
         temp.getInventory().Add(new Glove());

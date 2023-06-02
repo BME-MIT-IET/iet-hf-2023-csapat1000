@@ -28,7 +28,7 @@ public class LCode extends JLabel {
      */
     public LCode(Code a) {
         code = a;
-        setText("Code: " + code.GetResult().getClass().getSimpleName());
+        setText("Code: " + code.getResult().getClass().getSimpleName());
         addMouseListener(adapter);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         setForeground(Color.WHITE);

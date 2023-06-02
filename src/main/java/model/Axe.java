@@ -4,7 +4,7 @@ public class Axe extends Gear {
     private boolean used = false;
 
     @Override
-    public void Applied(Player p) {
+    public void applied(Player p) {
         if (!used) {
             p.died();
             used = true;
@@ -12,12 +12,12 @@ public class Axe extends Gear {
     }
 
     @Override
-    public String GetType() {
+    public String getType() {
         return "axe";
     }
 
     @Override
-    public boolean IsUsed() {
+    public boolean isUsed() {
         return used;
     }
 }

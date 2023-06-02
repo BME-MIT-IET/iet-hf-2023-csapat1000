@@ -298,7 +298,7 @@ public class Window extends JFrame {
             if (game.getMap().currentPlayer.getField() == fields[x][y]) {
                 fieldPanels[x][y].removeAll();
                 // Hozzaad minden mezon levo jatekost, egymas melle
-                for (var player : fields[x][y].GetPlayers())
+                for (var player : fields[x][y].getPlayers())
                     fieldPanels[x][y].add(new LPlayer(player));
             }
 
@@ -318,7 +318,7 @@ public class Window extends JFrame {
                 if (game.getMap().currentPlayer.getField() == fields[i][j]) {
                     fieldPanels[i][j].removeAll();
                     // Hozzaad minden mezon levo jatekost, egymas melle
-                    for (var player : fields[i][j].GetPlayers())
+                    for (var player : fields[i][j].getPlayers())
                         fieldPanels[i][j].add(new LPlayer(player));
                 }
             }

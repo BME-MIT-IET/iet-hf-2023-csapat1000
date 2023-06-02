@@ -2,18 +2,18 @@ package model;
 
 public class Bear extends Agent {
     @Override
-    public void Decrase() {
+    public void decrase() {
     }
 
     @Override
-    public int ChoreaFor() {
+    public int choreaFor() {
         return 1;
     }
 
     @Override
-    public void Moved(Player p, Field f) {
-        f.ClearMaterial();
-        for (var target : f.GetPlayers()) {
+    public void moved(Player p, Field f) {
+        f.clearMaterial();
+        for (var target : f.getPlayers()) {
             if (target != p)
                 p.attack(target, new Bear());
         }

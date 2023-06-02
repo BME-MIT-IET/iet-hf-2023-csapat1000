@@ -30,7 +30,7 @@ public class LGear extends JLabel {
     public LGear(Gear a) {
         gear = a;
         setText(gear.getClass().getSimpleName());
-        if(gear.IsUsed())
+        if(gear.isUsed())
         {
             setFont(this.getFont().deriveFont(Font.ITALIC));
             setForeground(Color.red);

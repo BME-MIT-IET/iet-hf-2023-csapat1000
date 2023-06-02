@@ -103,7 +103,7 @@ public class Game extends Thread {
                     //---------
                     case "fegyverlopas":
                         //ha nem all a mezon senki mas:
-                        if (map.getCurrentPlayer().getField().GetPlayers().size() == 1) {
+                        if (map.getCurrentPlayer().getField().getPlayers().size() == 1) {
                             update();
                             break;
                         }
@@ -129,7 +129,7 @@ public class Game extends Thread {
                     //---------
                     case "anyaglopas":
                         //ha nem all a mezon senki mas:
-                        if (map.getCurrentPlayer().getField().GetPlayers().size() == 1) {
+                        if (map.getCurrentPlayer().getField().getPlayers().size() == 1) {
                             update();
                             break;
                         }
@@ -309,7 +309,7 @@ public class Game extends Thread {
         }
 
         // a mezon levo felszereles
-        Gear g = map.getCurrentPlayer().getField().GetGear();
+        Gear g = map.getCurrentPlayer().getField().getGear();
 
         /*ha valoban van felszereles a mezon, a jatekos kivalaszthatja, hogy mit szerretne felvenni,
         es ha az megtalalhato ott, akkor felveheti
@@ -339,7 +339,7 @@ public class Game extends Thread {
             return;
         }
         Field field = map.currentPlayer.getField();
-        Code code = field.GetCode();
+        Code code = field.getCode();
         //ha a mezon nem volt kod
         if (code == null) {
             Window.get().setInfo("Ezen a mezon nincsen kod.");
@@ -366,10 +366,10 @@ public class Game extends Thread {
 
         //ha van nala hely ahhoz felszedje, amennyit szeretne
         if (owned.size() <= (max - required.size())) {
-            boolean isEnough = map.getCurrentPlayer().getField().AquireMaterials(required);
+            boolean isEnough = map.getCurrentPlayer().getField().aquireMaterials(required);
             if (isEnough) {
                 //Itt nem a laborrol kellene eltavolitani a required-et?
-                map.getCurrentPlayer().getField().RemoveMaterials(required);
+                map.getCurrentPlayer().getField().removeMaterials(required);
                 for (Material material : required) map.getCurrentPlayer().getInventory().Add(material);
             } else {
                 Window.get().setInfo("Nem tudsz anyagot felvenni errol a mezorol.\n" + "Lehet, hogy nem raktaron allsz, vagy kevesebb anyag\n" + "van a raktarban, mint amennyit felvenni szeretnel. :c");
