@@ -1,6 +1,6 @@
 # Stressztesztelés
 
-    A stressztesztelés a teljesítménytesztelés egy formája, amely egy rendszer stabilitását és robusztusságát értékeli szélsőséges vagy kedvezőtlen körülmények között. Célja annak felmérése, hogy a rendszer képes-e kezelni a nagy terhelést, a nagy forgalmat vagy az erőforrás-igényes forgatókönyveket. A stressztesztelés elsődleges célja a rendszer teljesítményének meghatározása és a stresszhelyzetben esetlegesen felmerülő szűk keresztmetszetek vagy gyengeségek azonosítása. Ez az információ segít a skálázhatóság tervezésében, a stabilitás biztosításában és a rendszer hibatűrő képességének javításában.
+A stressztesztelés a teljesítménytesztelés egy formája, amely egy rendszer stabilitását és robusztusságát értékeli szélsőséges vagy kedvezőtlen körülmények között. Célja annak felmérése, hogy a rendszer képes-e kezelni a nagy terhelést, a nagy forgalmat vagy az erőforrás-igényes forgatókönyveket. A stressztesztelés elsődleges célja a rendszer teljesítményének meghatározása és a stresszhelyzetben esetlegesen felmerülő szűk keresztmetszetek vagy gyengeségek azonosítása. Ez az információ segít a skálázhatóság tervezésében, a stabilitás biztosításában és a rendszer hibatűrő képességének javításában.
 
 ## 1. Célom
 
