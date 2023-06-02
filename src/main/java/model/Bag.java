@@ -2,12 +2,12 @@ package model;
 
 public class Bag extends Gear {
     @Override
-    public double GetPlusSize() {
+    public double getPlusSize() {
         return 1.2;
     }
 
     @Override
-    public String GetType() {
+    public String getType() {
         return "bag";
     }
 }

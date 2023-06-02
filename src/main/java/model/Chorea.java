@@ -2,7 +2,7 @@ package model;
 
 public class Chorea extends Agent {
     @Override
-    public int ChoreaFor() {
+    public int choreaFor() {
         return time;
     }
 

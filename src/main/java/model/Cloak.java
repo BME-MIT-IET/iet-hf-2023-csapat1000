@@ -5,7 +5,7 @@ import view.Window;
 
 public class Cloak extends Gear {
     @Override
-    public boolean Attacked(Player s, Player t, Agent a) {
+    public boolean attacked(Player s, Player t, Agent a) {
         boolean temp = Math.random() < 0.832;
         if(temp){
             Window.get().setInfo("A tamadas sikertelen!");
@@ -14,7 +14,7 @@ public class Cloak extends Gear {
     }
 
     @Override
-    public String GetType() {
+    public String getType() {
         return "cloak";
     }
 }

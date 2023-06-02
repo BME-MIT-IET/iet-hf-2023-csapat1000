@@ -56,11 +56,11 @@ public class Game extends Thread {
             //minden korben az elso feladat, hogy lepjen egyet a jatekos, helyben maradas nem opcio
             Window.get().setInfo("Valassz egy szomszedos mezot, amire lepni szeretnel");
             Field lepett = null;
-            if (map.getCurrentPlayer().ParalyzedFor()>0) { lepett = map.getCurrentPlayer().GetField(); }
+            if (map.getCurrentPlayer().paralyzedFor()>0) { lepett = map.getCurrentPlayer().getField(); }
             while (lepett == null) {
                 lepett = getField();
                 // Itt kene hogy booleant csinalni
-                if (!map.getCurrentPlayer().Move(lepett))
+                if (!map.getCurrentPlayer().move(lepett))
                     lepett = null;
             }
             //lepes sikeres vegrehajtasa utan update, ami frissiti a label-eket
@@ -71,7 +71,7 @@ public class Game extends Thread {
             String action;
             do {
                 action = null;
-                Window.get().setInfo(map.currentPlayer.GetField().getName() + " Valassz egy akciot, amit vegre szeretnel hajtani");
+                Window.get().setInfo(map.currentPlayer.getField().getName() + " Valassz egy akciot, amit vegre szeretnel hajtani");
                 //varunk egy akcio label kattintasra
                 while (action == null) {
                     action = getAction();
@@ -83,7 +83,7 @@ public class Game extends Thread {
                     //---------
                     case "tamadas":
                         // ha nincs felhasznalhato agens
-                        if (map.getCurrentPlayer().GetInventory().GetAgents().isEmpty()) {
+                        if (map.getCurrentPlayer().getInventory().GetAgents().isEmpty()) {
                             update();
                             break;
                         }
@@ -92,9 +92,9 @@ public class Game extends Thread {
                         Window.get().setInfo("Valassz egy felhasznalhato agenst!");
                         Agent agentClicked = getAgent();
                         if (map.getCurrentPlayer() == playerClicked)
-                            map.getCurrentPlayer().AttackOnSelf(agentClicked);
+                            map.getCurrentPlayer().attackOnSelf(agentClicked);
                         else
-                            map.getCurrentPlayer().Attack(playerClicked, agentClicked);
+                            map.getCurrentPlayer().attack(playerClicked, agentClicked);
                         update();
                         break;
 
@@ -103,14 +103,14 @@ public class Game extends Thread {
                     //---------
                     case "fegyverlopas":
                         //ha nem all a mezon senki mas:
-                        if (map.getCurrentPlayer().GetField().GetPlayers().size() == 1) {
+                        if (map.getCurrentPlayer().getField().getPlayers().size() == 1) {
                             update();
                             break;
                         }
                         Window.get().setInfo("Valassz egy jatekost!");
                         Player playerClicked1 = getPlayer();
                         // ha a masiknak nincsenek eszkozei
-                        if (playerClicked1.GetInventory().GetGears().isEmpty()) {
+                        if (playerClicked1.getInventory().GetGears().isEmpty()) {
                             update();
                             break;
                         }
@@ -120,7 +120,7 @@ public class Game extends Thread {
                         Gear toSteal = getGear();
                         //visszaallitjuk a paneleket
                         Window.get().stealGearSet(map.getCurrentPlayer());
-                        map.getCurrentPlayer().StealGear(playerClicked1, toSteal);
+                        map.getCurrentPlayer().stealGear(playerClicked1, toSteal);
                         update();
                         break;
 
@@ -129,14 +129,14 @@ public class Game extends Thread {
                     //---------
                     case "anyaglopas":
                         //ha nem all a mezon senki mas:
-                        if (map.getCurrentPlayer().GetField().GetPlayers().size() == 1) {
+                        if (map.getCurrentPlayer().getField().getPlayers().size() == 1) {
                             update();
                             break;
                         }
                         Window.get().setInfo("Valassz egy jatekost!");
                         Player playerClicked2 = getPlayer();
                         //ha a celpontnak nincsenek nyersanyagai
-                        if (playerClicked2.GetInventory().GetMaterials().isEmpty()) {
+                        if (playerClicked2.getInventory().GetMaterials().isEmpty()) {
                             update();
                             break;
                         }
@@ -144,7 +144,7 @@ public class Game extends Thread {
                         Window.get().chooseMaterial();
                         Material material = getMaterial();
                         Window.get().materialSet(map.getCurrentPlayer());
-                        map.getCurrentPlayer().StealMaterial(playerClicked2, material);
+                        map.getCurrentPlayer().stealMaterial(playerClicked2, material);
                         update();
                         break;
 
@@ -152,7 +152,7 @@ public class Game extends Thread {
                     //KOD LETAPOGATASA
                     //---------
                     case "kod letapogatasa":
-                        CollectCode();
+                        collectCode();
                         update();
                         break;
 
@@ -160,7 +160,7 @@ public class Game extends Thread {
                     //FELSZERELES FELVETELE
                     //---------
                     case "felszereles felvetele":
-                        CollectGear();
+                        collectGear();
                         update();
                         break;
 
@@ -184,7 +184,7 @@ public class Game extends Thread {
                             req.add(new Amino());
                             req.add(new Amino());
                         }
-                        CollectMaterial(req);
+                        collectMaterial(req);
                         update();
                         break;
 
@@ -193,13 +193,13 @@ public class Game extends Thread {
                     //---------
                     case "craftolas":
                         //ha nincs megtanult kodja
-                        if (map.getCurrentPlayer().GetKnownCodes().isEmpty()) {
+                        if (map.getCurrentPlayer().getKnownCodes().isEmpty()) {
                             update();
                             break;
                         }
                         Window.get().setInfo("Mit szeretnel craftolni?");
                         Code clickedCode = getCode();
-                        map.getCurrentPlayer().GetInventory().Craft(clickedCode);
+                        map.getCurrentPlayer().getInventory().Craft(clickedCode);
                         update();
                         break;
 
@@ -212,12 +212,14 @@ public class Game extends Thread {
                         winner = getWinner();
                         //beallitjuk, hogy az aktiv jatekos a map jatekos listajaban a kovetkezo legyen
                         setCurrentPlayer(map.players.get((map.players.indexOf(getCurrentPlayer()) + 1) % map.players.size()));
-                        map.getCurrentPlayer().Decrase();
+                        map.getCurrentPlayer().decrase();
 
                         //a kor vegen a teljes terkepet ki kell rajzolni, nem csak az adott jatekoshoz kapcsolodo mezok valtoznak
                         Window.get().mapUpdateKorvege();
                         //es a paneleket is updatelni kell
                         update();
+                        break;
+                    default:
                         break;
                 }
             } while (!action.equals("kor vege"));
@@ -249,8 +251,8 @@ public class Game extends Thread {
      */
     public Player getWinner() {
         for (Player p : map.players) {
-            if (p.GetKnownCodesSize() == allCodes.size()) {
-                End();
+            if (p.getKnownCodesSize() == allCodes.size()) {
+                end();
                 return p;
             }
         }
@@ -260,7 +262,7 @@ public class Game extends Thread {
     /**
      * A jatek veget er
      */
-    private void End() {
+    private void end() {
         Window.get().setInfo("Gratulalunk, nyertel!!:)");
     }
 
@@ -286,9 +288,9 @@ public class Game extends Thread {
      * ha az inventory-jaban 3 nal tobb felszereles lenne
      * Eldontheti melyiket, dobja el, es igy melyik 3-t tartsa meg.
      */
-    public void ChooseGear() {
-        if (map.currentPlayer.GetInventory().GetGears().size() > 3) {
-            List<Gear> g1 = map.currentPlayer.GetInventory().GetGears();
+    public void chooseGear() {
+        if (map.currentPlayer.getInventory().GetGears().size() > 3) {
+            List<Gear> g1 = map.currentPlayer.getInventory().GetGears();
 
             Window.get().setInfo("Melyik felszerlest szeretned eldobni?");
             Gear clickedGear = getGear();
@@ -299,22 +301,22 @@ public class Game extends Thread {
     /**
      * A CollectGear() fuggveny segitsegevel lehet felszerelest felvenni az ovohelyrol.
      */
-    public void CollectGear() {
+    public void collectGear() {
         //ha benult nem tud felvenni
-        if (map.getCurrentPlayer().ParalyzedFor() > 0) {
+        if (map.getCurrentPlayer().paralyzedFor() > 0) {
             Window.get().setInfo("Benultan nem vehetsz fel felszerelest.");
             return;
         }
 
         // a mezon levo felszereles
-        Gear g = map.getCurrentPlayer().GetField().GetGear();
+        Gear g = map.getCurrentPlayer().getField().getGear();
 
         /*ha valoban van felszereles a mezon, a jatekos kivalaszthatja, hogy mit szerretne felvenni,
         es ha az megtalalhato ott, akkor felveheti
          */
         if (g != null) {
-            map.getCurrentPlayer().GetInventory().Add(g);
-            ChooseGear();
+            map.getCurrentPlayer().getInventory().Add(g);
+            chooseGear();
         }
         //ha nincs felszereles a mezon
         else
@@ -330,45 +332,45 @@ public class Game extends Thread {
      * Ha a jatekos nem laboron all, nem csinal semmit.
      * Ellenorzi, hogy lett-e nyertes.
      */
-    public void CollectCode() {
+    public void collectCode() {
         //ha a jatekos le van benulva
-        if (map.currentPlayer.ParalyzedFor() > 0) {
+        if (map.currentPlayer.paralyzedFor() > 0) {
             Window.get().setInfo("Benultan nem tapogathatsz");
             return;
         }
-        Field field = map.currentPlayer.GetField();
-        Code code = field.GetCode();
+        Field field = map.currentPlayer.getField();
+        Code code = field.getCode();
         //ha a mezon nem volt kod
         if (code == null) {
             Window.get().setInfo("Ezen a mezon nincsen kod.");
             return;
         }
-        map.currentPlayer.LearnCode(code);
+        map.currentPlayer.learnCode(code);
         getWinner();
     }
 
     /**
      * Anyag felvetele
      */
-    public void CollectMaterial(List<Material> required) {
+    public void collectMaterial(List<Material> required) {
         //megvizsgaljuk, hogy a jatekos le van e benulva
-        if (map.getCurrentPlayer().ParalyzedFor() > 0) {
+        if (map.getCurrentPlayer().paralyzedFor() > 0) {
             Window.get().setInfo("Benultan nem vehetsz fel anyagot.");
             return;
         }
 
         //a current player altal birtokolt anyagok listaja
-        List<Material> owned = map.getCurrentPlayer().GetInventory().GetMaterials();
+        List<Material> owned = map.getCurrentPlayer().getInventory().GetMaterials();
         //max ennyi lehet nala
-        int max = map.getCurrentPlayer().GetInventory().GetMaxMaterials();
+        int max = map.getCurrentPlayer().getInventory().GetMaxMaterials();
 
         //ha van nala hely ahhoz felszedje, amennyit szeretne
         if (owned.size() <= (max - required.size())) {
-            boolean isEnough = map.getCurrentPlayer().GetField().AquireMaterials(required);
+            boolean isEnough = map.getCurrentPlayer().getField().aquireMaterials(required);
             if (isEnough) {
                 //Itt nem a laborrol kellene eltavolitani a required-et?
-                map.getCurrentPlayer().GetField().RemoveMaterials(required);
-                for (Material material : required) map.getCurrentPlayer().GetInventory().Add(material);
+                map.getCurrentPlayer().getField().removeMaterials(required);
+                for (Material material : required) map.getCurrentPlayer().getInventory().Add(material);
             } else {
                 Window.get().setInfo("Nem tudsz anyagot felvenni errol a mezorol.\n" + "Lehet, hogy nem raktaron allsz, vagy kevesebb anyag\n" + "van a raktarban, mint amennyit felvenni szeretnel. :c");
             }
@@ -522,7 +524,7 @@ public class Game extends Thread {
      * a parameterkent kapott jatekost meggyilkolka - ez akkor tortenhet, ha valakit baltaval lecsaptak
      * @param p a jatekos, aki meghal
      */
-    public void Died(Player p) {
+    public void died(Player p) {
         if (p == null) return;
         //ennyiedik eleme a playerek listanak, akit torolni szeretnenk majd,
         // de eleinte -1, ha esetleg id alapjan nem talaljuk,

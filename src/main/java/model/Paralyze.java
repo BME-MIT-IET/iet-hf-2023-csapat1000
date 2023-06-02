@@ -2,7 +2,7 @@ package model;
 
 public class Paralyze extends Agent {
     @Override
-    public int ParalyzedFor() {
+    public int paralyzedFor() {
         return time;
     }
 

@@ -10,7 +10,7 @@ public class Lab extends Field {
     }
 
     @Override
-    public Code GetCode() {
+    public Code getCode() {
         return code;
     }
     public String getPath(){
