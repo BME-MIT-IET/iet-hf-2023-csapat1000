@@ -1,29 +1,38 @@
 package controller;
 
 
-import view.Window;
 import model.*;
+import view.Window;
+
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Game extends Thread {
-    //egy jatekterkepet tarol
+    /**
+     * egy jatekterkepet tarol.
+     */
     private final Map map;
-    //es az osszes megszerezheto genetikai kodot a jatekban
+    /**
+     * es az osszes megszerezheto genetikai kodot a jatekban.
+     */
     private final List<Code> allCodes;
+    /**
+     * A játékban használt sokszögek oldalainak száma.
+     */
+    private final int sides = 6;
 
 
     /**
-     * A Game osztaly konstruktora
+     * A Game osztaly konstruktora.
      * inicializalasok tortennek benne
      * @param jatekosok parameterkent kapja, hogy hany jatekos fogja jatszani a jatekot
      */
     public Game(int jatekosok) {
         super();
         //letrehoz, egy 6x6-os jatekterkepet, es ugyanekkor parameterul adja tovabb a jatekosok szamat
-        map = new Map(6, jatekosok);
+        map = new Map(sides, jatekosok);
         //tarolja az osszes megszerezheto genetikai kodot a jatekban
         allCodes = new ArrayList<>();
         //ezeket egyesevel hozzaadja
@@ -37,7 +46,7 @@ public class Game extends Thread {
     }
 
     /**
-     * A terkep gettere
+     * A terkep gettere.
      * @return visszaadja a jatekterkepet
      */
     public Map getMap() {
@@ -56,7 +65,7 @@ public class Game extends Thread {
             //minden korben az elso feladat, hogy lepjen egyet a jatekos, helyben maradas nem opcio
             Window.get().setInfo("Valassz egy szomszedos mezot, amire lepni szeretnel");
             Field lepett = null;
-            if (map.getCurrentPlayer().ParalyzedFor()>0) { lepett = map.getCurrentPlayer().GetField(); }
+            if (map.getCurrentPlayer().ParalyzedFor() > 0) { lepett = map.getCurrentPlayer().GetField(); }
             while (lepett == null) {
                 lepett = getField();
                 // Itt kene hogy booleant csinalni
@@ -91,10 +100,11 @@ public class Game extends Thread {
                         Player playerClicked = getPlayer();
                         Window.get().setInfo("Valassz egy felhasznalhato agenst!");
                         Agent agentClicked = getAgent();
-                        if (map.getCurrentPlayer() == playerClicked)
+                        if (map.getCurrentPlayer() == playerClicked) {
                             map.getCurrentPlayer().AttackOnSelf(agentClicked);
-                        else
+                        } else {
                             map.getCurrentPlayer().Attack(playerClicked, agentClicked);
+                        }
                         update();
                         break;
 
@@ -317,8 +327,9 @@ public class Game extends Thread {
             ChooseGear();
         }
         //ha nincs felszereles a mezon
-        else
+        else {
             Window.get().setInfo("Nem tudsz fegyvert felvenni:((");
+        }
         Window.get().update();
 
     }
