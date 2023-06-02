@@ -52,6 +52,13 @@ Jobb lett volna, ha egy webes vagy mobil alkalmazást választunk tesztelésre, 
 
 A csapat nagyon konstruktívan tudott együttműködik. Zökkenőmentes volt a kommunikáció, és hatékonyan tudtunk haladni a feladatokkal, akár közös, akár egyéni munkáról volt szó.
 
+### Bárány Kristóf Zsolt
+A stressztesztelés egy eddig számomra ismeretlen része volt a szoftverfejlesztésnek. Igaz, hogy nagyrészt web-es alkalmazások tesztelésénél elterjedt művelet, de a Java-ban írt játékprogram kontextusában is tudtam alkalmazni néhány elemét.
+
+A játékprogram nem volt eléggé OO ezért kicsit nehéz volt megvalósítani a tesztesetet, aminek segítségével elvégeztem a stressztesztelést. Végül ezt megoldottam, de fölösleges időbe telt, ahogy a stresszteszteléshez használt program működésének felépítése is.
+
+Csapatommal viszont teljes mértékben meg voltam elégedve, az első perctől kezdve profi módon állt hozzá mindenki a házifeladat elkészítéséhez. Szétosztottuk egyenlő részekre a feladatot, de bármikor segítségre volt szüksége egy csapattagnak, ott volt mindig valaki.
+
 ---
 
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/coREwzrI)
