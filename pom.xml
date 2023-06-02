@@ -28,8 +28,14 @@
             <version>5.3.1</version>
             <scope>test</scope>
         </dependency>
+      
+       <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-checkstyle-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.3.0</version>
+        </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
@@ -83,6 +89,15 @@
                 </executions>
             </plugin>
           
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>
